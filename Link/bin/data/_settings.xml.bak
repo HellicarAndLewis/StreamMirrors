@@ -1,0 +1,30 @@
+<controls>
+    <Toggle_Draw_Debug>
+        <name>Draw Debug</name>
+        <value>0</value>
+    </Toggle_Draw_Debug>
+    <Toggle_Rotate_Clockwise>
+        <name>Rotate Clockwise</name>
+        <value>1</value>
+    </Toggle_Rotate_Clockwise>
+    <Toggle_Flip_X>
+        <name>Flip X</name>
+        <value>0</value>
+    </Toggle_Flip_X>
+    <SliderFloat_Triggers_Horizontal>
+        <name>Triggers Horizontal</name>
+        <value>146.4</value>
+    </SliderFloat_Triggers_Horizontal>
+    <SliderFloat_Triggers_Vertical>
+        <name>Triggers Vertical</name>
+        <value>403.2</value>
+    </SliderFloat_Triggers_Vertical>
+    <SliderFloat_Triggers_Radius>
+        <name>Triggers Radius</name>
+        <value>33.5</value>
+    </SliderFloat_Triggers_Radius>
+    <SliderInt_Trigger_Depth>
+        <name>Trigger Depth</name>
+        <value>151</value>
+    </SliderInt_Trigger_Depth>
+</controls>
