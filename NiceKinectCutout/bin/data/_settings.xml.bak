@@ -1,0 +1,18 @@
+<controls>
+    <SliderInt_dilations>
+        <name>dilations</name>
+        <value>2</value>
+    </SliderInt_dilations>
+    <SliderInt_blurs>
+        <name>blurs</name>
+        <value>1</value>
+    </SliderInt_blurs>
+    <SliderInt_blur_size>
+        <name>blur size</name>
+        <value>2</value>
+    </SliderInt_blur_size>
+    <SliderFloat_threshold>
+        <name>threshold</name>
+        <value>127.5</value>
+    </SliderFloat_threshold>
+</controls>
