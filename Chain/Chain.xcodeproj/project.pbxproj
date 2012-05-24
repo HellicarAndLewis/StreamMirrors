@@ -1223,7 +1223,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxKinect/libs/libfreenect/lib/vs2010\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = ChainDebug;
-				SDKROOT = macosx10.6;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1314,7 +1314,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxKinect/libs/libfreenect/lib/vs2010\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = Chain;
-				SDKROOT = macosx10.6;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

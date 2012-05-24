@@ -72,13 +72,17 @@ public:
 	int blurSize;
 
 	int holdCount;
-	
+	void doCompositing();
 	void drawOverlays();
 	Carousel carousel;
 	void doVision();
+	void setupVision();
 	
+	float minRecordingInterval;
 	ActivityMonitor activityMonitor;
 	PresenceDetector presenceDetector;
-	bool mouseIsDown;
+	ofTexture videoFeed;
+	unsigned char *videoFeedData;
+	float carouselDelay;
 };
 

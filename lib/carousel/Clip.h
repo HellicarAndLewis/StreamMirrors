@@ -9,17 +9,35 @@
 #ifndef opencvExample_Clip_h
 #define opencvExample_Clip_h
 
-class Clip: public ofRectangle {
+class Clip {
 public:
 	RamVideo *video;
+	ofTexture *videoFeed;
+	bool isVideoFeed;
+	Clip() {
+		isVideoFeed = false;
+	}
+	void setVideoFeed(ofTexture *videoFeed) {
+		isVideoFeed = true;
+		this->videoFeed = videoFeed;
+	}
 	
 	void draw() {
-		video->nextFrame();
-		video->draw(x, y, width);
+		if(isVideoFeed) {
+			videoFeed->draw(0, 0);
+		} else {
+			video->nextFrame();
+			video->draw(0, 0);
+		}
 	}
-	void draw(const ofRectangle &r) {
-		video->nextFrame();
-		video->draw(r);
+	
+	void draw(float x, float y) {
+		if(isVideoFeed) {
+			videoFeed->draw(x, y);
+		} else {
+			video->nextFrame();
+			video->draw(x, y);
+		}
 	}
 };
 

@@ -51,20 +51,22 @@ public:
 	bool lastRightDetected;
 	
 	
-	void draw() {
+	void draw(float alpha) {
+		if(alpha==0) return;
 		ofNoFill();
 		glLineWidth(5);
 		
 		if(leftSmoothed) {
-			ofSetHexColor(0x00FF00);
+
+			glColor4f(0,1,0, alpha);
 		} else {
-			ofSetHexColor(0xFF00BB);
+			glColor4f(1,0,0.6,alpha);
 		}
 		ofCircle(240 - triggersX, triggersY, triggerRadius);
 		if(rightSmoothed) {
-			ofSetHexColor(0x00FF00);
+			glColor4f(0,1,0, alpha);
 		} else {
-			ofSetHexColor(0xFF00BB);
+			glColor4f(1,0,0.6,alpha);
 		}
 		ofCircle(240 + triggersX, triggersY, triggerRadius);
 		glLineWidth(1);

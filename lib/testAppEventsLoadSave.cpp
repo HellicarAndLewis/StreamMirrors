@@ -41,7 +41,7 @@ void testApp::loadEverything() {
 		videos.push_back(new RamVideo());
 		videos.back()->setup(480, 640, MAX_VIDEO_LENGTH);
 		videos.back()->load(dir[i].path());
-		carousel.addToEnd(videos.back());
+		carousel.addVideo(videos.back());
 	}
 }
 
@@ -81,12 +81,11 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-	mouseIsDown = true;
+
 }
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
-	mouseIsDown = false;
 }
 
 //--------------------------------------------------------------
