@@ -5,7 +5,7 @@
     </Toggle_Draw_Debug>
     <Toggle_Rotate_Clockwise>
         <name>Rotate Clockwise</name>
-        <value>0</value>
+        <value>1</value>
     </Toggle_Rotate_Clockwise>
     <Toggle_Flip_X>
         <name>Flip X</name>
@@ -29,7 +29,7 @@
     </SliderFloat_Min_Time_between_recordings>
     <SliderInt_Carousel_video_duration>
         <name>Carousel video duration</name>
-        <value>27</value>
+        <value>70</value>
     </SliderInt_Carousel_video_duration>
     <SliderFloat_Carousel_inactivity_delay>
         <name>Carousel inactivity delay</name>
@@ -37,11 +37,11 @@
     </SliderFloat_Carousel_inactivity_delay>
     <SliderFloat_Slide_time_pct>
         <name>Slide time pct</name>
-        <value>0.0595</value>
+        <value>0.73875</value>
     </SliderFloat_Slide_time_pct>
     <SliderFloat_Overlap>
         <name>Overlap</name>
-        <value>99.5</value>
+        <value>74.5</value>
     </SliderFloat_Overlap>
     <SliderFloat_Triggers_Horizontal>
         <name>Triggers Horizontal</name>
@@ -57,6 +57,6 @@
     </SliderFloat_Triggers_Radius>
     <SliderInt_Trigger_Depth>
         <name>Trigger Depth</name>
-        <value>163</value>
+        <value>169</value>
     </SliderInt_Trigger_Depth>
 </controls>

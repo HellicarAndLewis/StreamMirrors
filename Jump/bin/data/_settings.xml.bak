@@ -37,26 +37,18 @@
     </SliderFloat_Carousel_inactivity_delay>
     <SliderFloat_Slide_time_pct>
         <name>Slide time pct</name>
-        <value>0.73875</value>
+        <value>1</value>
     </SliderFloat_Slide_time_pct>
     <SliderFloat_Overlap>
         <name>Overlap</name>
-        <value>74.5</value>
+        <value>0</value>
     </SliderFloat_Overlap>
-    <SliderFloat_Triggers_Horizontal>
-        <name>Triggers Horizontal</name>
-        <value>196.8</value>
-    </SliderFloat_Triggers_Horizontal>
-    <SliderFloat_Triggers_Vertical>
-        <name>Triggers Vertical</name>
-        <value>336</value>
-    </SliderFloat_Triggers_Vertical>
-    <SliderFloat_Triggers_Radius>
-        <name>Triggers Radius</name>
-        <value>26</value>
-    </SliderFloat_Triggers_Radius>
+    <SliderFloat_Trigger_Height>
+        <name>Trigger Height</name>
+        <value>518.4</value>
+    </SliderFloat_Trigger_Height>
     <SliderInt_Trigger_Depth>
         <name>Trigger Depth</name>
-        <value>175</value>
+        <value>209</value>
     </SliderInt_Trigger_Depth>
 </controls>
