@@ -15,7 +15,12 @@
 #define MAX_VIDEO_LENGTH 50
 #define MIN_VIDEO_LENGTH 4
 
-
+enum STATE {
+	WAITING_FOR_PERSON,
+	READY_WITH_PERSON,
+	RECORDING,
+	WAITING_FOR_PERSON_TO_GO
+};
 
 class testApp : public ofBaseApp{
 
@@ -23,6 +28,8 @@ public:
 	void setup();
 	void update();
 	void draw();
+	
+	STATE state;
 	
 	void keyPressed(int key);
 	void keyReleased(int key);
@@ -40,9 +47,12 @@ public:
 	KinectOrCamera cam;
 
 	ofxCvColorImage			colorImg;
+	ofxCvGrayscaleImage		bgImg;
 	ofxCvGrayscaleImage		depthImg;
 	ofxCvGrayscaleImage		threshImg;
 	
+	bool learnBackground;
+	int bgHysteresis;
 	
 	void rotateRgb90(unsigned char *a, unsigned char *b, bool clockwise, bool flipX);
 	void rotate90(unsigned char *a, unsigned char *b, bool clockwise, bool flipX);
@@ -63,11 +73,13 @@ public:
 	
 
 	bool drawDebug;
-	int triggerDepth;
-	
+	int nearThreshold;
+	int farThreshold;	
 	bool recording;
-
+	
+	int erosions;
 	int dilations;
+	
 	int blurs;
 	int blurSize;
 
@@ -77,12 +89,13 @@ public:
 	Carousel carousel;
 	void doVision();
 	void setupVision();
-	
+
 	float minRecordingInterval;
 	ActivityMonitor activityMonitor;
 	JumpDetector jumpDetector;
 	ofTexture videoFeed;
 	unsigned char *videoFeedData;
 	float carouselDelay;
+	ofTrueTypeFont debugFont;
 };
 

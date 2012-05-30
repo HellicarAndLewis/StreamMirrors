@@ -1,0 +1,5 @@
+*.app
+*/bin/data/vids
+.DS_Store
+theo.mode1v3
+*.pbxuser

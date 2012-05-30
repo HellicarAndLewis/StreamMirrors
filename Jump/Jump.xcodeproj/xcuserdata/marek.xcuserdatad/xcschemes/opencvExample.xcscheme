@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-               BuildableName = "Jump.app"
+               BuildableName = "JumpDebug.app"
                BlueprintName = "Jump"
                ReferencedContainer = "container:Jump.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "Jump.app"
+            BuildableName = "JumpDebug.app"
             BlueprintName = "Jump"
             ReferencedContainer = "container:Jump.xcodeproj">
          </BuildableReference>
@@ -41,17 +41,16 @@
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      displayScaleIsEnabled = "NO"
+      displayScale = "1.00"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
-      ignoresPersistentStateOnLaunch = "NO"
-      debugDocumentVersioning = "YES"
-      allowLocationSimulation = "YES">
+      buildConfiguration = "Debug">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "Jump.app"
+            BuildableName = "JumpDebug.app"
             BlueprintName = "Jump"
             ReferencedContainer = "container:Jump.xcodeproj">
          </BuildableReference>
@@ -60,16 +59,17 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      displayScaleIsEnabled = "NO"
+      displayScale = "1.00"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
-      debugDocumentVersioning = "YES">
+      buildConfiguration = "Release">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "Jump.app"
+            BuildableName = "JumpDebug.app"
             BlueprintName = "Jump"
             ReferencedContainer = "container:Jump.xcodeproj">
          </BuildableReference>
