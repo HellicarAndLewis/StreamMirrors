@@ -43,6 +43,7 @@
 		EA6034A3156D5C5D00855F80 /* testAppEventsLoadSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA60348F156D5C5D00855F80 /* testAppEventsLoadSave.cpp */; };
 		EA6034A4156D5C5D00855F80 /* testAppRotatePixels.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA603490156D5C5D00855F80 /* testAppRotatePixels.cpp */; };
 		EA6034A5156D5C5D00855F80 /* KinectOrCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA603495156D5C5D00855F80 /* KinectOrCamera.cpp */; };
+		EABE506E157A3D1500FD067F /* testAppVision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EABE506C157A3D1500FD067F /* testAppVision.cpp */; };
 		EAEDDE23156A6CBC0016A7F7 /* ofxMSAInteractiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAEDDDF0156A6CBC0016A7F7 /* ofxMSAInteractiveObject.cpp */; };
 		EAEDDE26156A6CBC0016A7F7 /* ofxSimpleGuiButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAEDDDFF156A6CBC0016A7F7 /* ofxSimpleGuiButton.cpp */; };
 		EAEDDE27156A6CBC0016A7F7 /* ofxSimpleGuiColorPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAEDDE01156A6CBC0016A7F7 /* ofxSimpleGuiColorPicker.cpp */; };
@@ -174,6 +175,7 @@
 		EA603494156D5C5D00855F80 /* ActivityMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityMonitor.h; sourceTree = "<group>"; };
 		EA603495156D5C5D00855F80 /* KinectOrCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KinectOrCamera.cpp; sourceTree = "<group>"; };
 		EA603496156D5C5D00855F80 /* KinectOrCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectOrCamera.h; sourceTree = "<group>"; };
+		EABE506C157A3D1500FD067F /* testAppVision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testAppVision.cpp; sourceTree = "<group>"; };
 		EAEDDDE4156A6CBC0016A7F7 /* changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = changelog.txt; sourceTree = "<group>"; };
 		EAEDDDED156A6CBC0016A7F7 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
 		EAEDDDEE156A6CBC0016A7F7 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				EA60346E156D5C5D00855F80 /* animation */,
 				EA60348C156D5C5D00855F80 /* carousel */,
 				EA60348F156D5C5D00855F80 /* testAppEventsLoadSave.cpp */,
+				EABE506C157A3D1500FD067F /* testAppVision.cpp */,
 				EA603490156D5C5D00855F80 /* testAppRotatePixels.cpp */,
 				EA603491156D5C5D00855F80 /* video */,
 				EA603493156D5C5D00855F80 /* vision */,
@@ -1065,6 +1068,7 @@
 				EA6034A3156D5C5D00855F80 /* testAppEventsLoadSave.cpp in Sources */,
 				EA6034A4156D5C5D00855F80 /* testAppRotatePixels.cpp in Sources */,
 				EA6034A5156D5C5D00855F80 /* KinectOrCamera.cpp in Sources */,
+				EABE506E157A3D1500FD067F /* testAppVision.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

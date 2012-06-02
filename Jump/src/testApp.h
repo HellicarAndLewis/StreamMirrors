@@ -53,6 +53,13 @@ public:
 	
 	bool learnBackground;
 	int bgHysteresis;
+	int farThreshold;
+	
+	int erosions;
+	int dilations;
+	
+	int blurs;
+	int blurSize;
 	
 	void rotateRgb90(unsigned char *a, unsigned char *b, bool clockwise, bool flipX);
 	void rotate90(unsigned char *a, unsigned char *b, bool clockwise, bool flipX);
@@ -74,14 +81,10 @@ public:
 
 	bool drawDebug;
 	int nearThreshold;
-	int farThreshold;	
+		
 	bool recording;
 	
-	int erosions;
-	int dilations;
 	
-	int blurs;
-	int blurSize;
 
 	int holdCount;
 	void doCompositing();

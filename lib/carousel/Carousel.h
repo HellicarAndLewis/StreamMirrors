@@ -12,6 +12,8 @@
 #include "RamVideo.h"
 #include "Tween.h"
 #include "animation.h"
+#define MAX_NUM_VIDEOS 3
+
 
 class Carousel {
 public:
@@ -33,9 +35,10 @@ public:
 	float slideTime;
 	
 
-	
+	RamVideo *videoBeingRemoved;
 	
 	Carousel() {
+		videoBeingRemoved = NULL;
 		paused = false;
 		overlap = 0;
 
@@ -120,7 +123,28 @@ public:
 		}
 	}
 	
-	
+	void checkForSize() {
+		if(videoBeingRemoved!=NULL) {
+			if(videoBeingRemoved->done()) {
+				delete [] videoBeingRemoved;
+				videoBeingRemoved = NULL;
+			}
+		}
+		
+		if(videoBeingRemoved==NULL) {
+			if(clips.size()>MAX_NUM_VIDEOS) {
+				if(currVideo!=0 && !clips.front().isAVideoFeed()) {	
+									// the beginning of the clip deque
+									// is the first one that was recorded.
+									// we want to delete it if it's not currently
+									// being played.
+					videoBeingRemoved = clips.front()->video;
+					// start the dump here.
+					
+				}
+			}
+		}
+	}
 	
 	
 	bool isScrolling() {
