@@ -38,10 +38,21 @@ public:
 	
 	
 	KinectOrCamera cam;
-
+	
 	ofxCvColorImage			colorImg;
+	ofxCvGrayscaleImage		bgImg;
 	ofxCvGrayscaleImage		depthImg;
 	ofxCvGrayscaleImage		threshImg;
+	
+	bool learnBackground;
+	int bgHysteresis;
+	int farThreshold;
+	
+	int erosions;
+	int dilations;
+	
+	int blurs;
+	int blurSize;
 	
 	
 	void rotateRgb90(unsigned char *a, unsigned char *b, bool clockwise, bool flipX);
@@ -67,9 +78,7 @@ public:
 	
 	bool recording;
 
-	int dilations;
-	int blurs;
-	int blurSize;
+	
 
 	int holdCount;
 	void doCompositing();

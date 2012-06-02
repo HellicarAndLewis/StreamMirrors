@@ -1,8 +1,4 @@
 <controls>
-    <Toggle_Draw_Debug>
-        <name>Draw Debug</name>
-        <value>1</value>
-    </Toggle_Draw_Debug>
     <Toggle_Rotate_Clockwise>
         <name>Rotate Clockwise</name>
         <value>1</value>
@@ -11,18 +7,34 @@
         <name>Flip X</name>
         <value>0</value>
     </Toggle_Flip_X>
+    <Toggle_Learn_BG>
+        <name>Learn BG</name>
+        <value>0</value>
+    </Toggle_Learn_BG>
+    <SliderInt_BG_Hysteresis>
+        <name>BG Hysteresis</name>
+        <value>0</value>
+    </SliderInt_BG_Hysteresis>
+    <SliderInt_erosions>
+        <name>erosions</name>
+        <value>1</value>
+    </SliderInt_erosions>
     <SliderInt_dilations>
         <name>dilations</name>
-        <value>2</value>
+        <value>1</value>
     </SliderInt_dilations>
     <SliderInt_blurs>
         <name>blurs</name>
-        <value>2</value>
+        <value>1</value>
     </SliderInt_blurs>
     <SliderInt_blur_size>
         <name>blur size</name>
         <value>2</value>
     </SliderInt_blur_size>
+    <Toggle_Draw_Debug>
+        <name>Draw Debug</name>
+        <value>1</value>
+    </Toggle_Draw_Debug>
     <SliderFloat_Min_Time_between_recordings>
         <name>Min Time between recordings</name>
         <value>6.5</value>
@@ -37,7 +49,7 @@
     </SliderFloat_Carousel_inactivity_delay>
     <SliderFloat_Slide_time_pct>
         <name>Slide time pct</name>
-        <value>0.73875</value>
+        <value>0.52975</value>
     </SliderFloat_Slide_time_pct>
     <SliderFloat_Overlap>
         <name>Overlap</name>
@@ -57,6 +69,6 @@
     </SliderFloat_Triggers_Radius>
     <SliderInt_Trigger_Depth>
         <name>Trigger Depth</name>
-        <value>175</value>
+        <value>168</value>
     </SliderInt_Trigger_Depth>
 </controls>

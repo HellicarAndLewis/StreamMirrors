@@ -12,6 +12,8 @@
 #include "RamVideo.h"
 #include "Tween.h"
 #include "animation.h"
+#define MAX_NUM_VIDEOS 3
+
 
 class Carousel {
 public:
@@ -33,9 +35,10 @@ public:
 	float slideTime;
 	
 
-	
+	RamVideo *videoBeingRemoved;
 	
 	Carousel() {
+		videoBeingRemoved = NULL;
 		paused = false;
 		overlap = 0;
 
@@ -57,9 +60,28 @@ public:
 	int whatNextVideoWas;
 	int nextVideoToVideoFeedStartTime;
 	
+	void autoScroll() {
+		paused = false;
+		printf("Autoscrolling\n");
+		
+		// start sliding straight away if we're not already sliding
+		if(frameNum < slideTime*frameDuration) frameNum = slideTime*frameDuration;
+		
+		// make sure the next frame isn't the video.
+		if(nextVideo==-1) {
+			nextVideo = currVideo+1;
+			if(nextVideo>=clips.size()) {
+				nextVideo = 0;
+			}
+		}
+	}
+	
 	void scrollToVideoFeed() {
 		
+		// start sliding straight away if we're not already sliding
+		if(frameNum < slideTime*frameDuration) frameNum = slideTime*frameDuration;
 		
+		// if the next slide is not the video feed, change it to the video feed.
 		if(nextVideo!=-1) {
 			whatNextVideoWas = nextVideo;
 			nextVideoToVideoFeedStartTime = ofGetElapsedTimef();
@@ -101,15 +123,25 @@ public:
 		}
 	}
 	
-	void autoScroll() {
-		paused = false;
-		printf("Autoscrolling\n");
+	void checkForSize() {
+		if(videoBeingRemoved!=NULL) {
+			if(videoBeingRemoved->done()) {
+				delete [] videoBeingRemoved;
+				videoBeingRemoved = NULL;
+			}
+		}
 		
-		// make sure the next frame isn't the video.
-		if(nextVideo==-1) {
-			nextVideo = currVideo+1;
-			if(nextVideo>=clips.size()) {
-				nextVideo = 0;
+		if(videoBeingRemoved==NULL) {
+			if(clips.size()>MAX_NUM_VIDEOS) {
+				if(currVideo!=0 && !clips.front().isAVideoFeed()) {	
+									// the beginning of the clip deque
+									// is the first one that was recorded.
+									// we want to delete it if it's not currently
+									// being played.
+					videoBeingRemoved = clips.front()->video;
+					// start the dump here.
+					
+				}
 			}
 		}
 	}
@@ -120,8 +152,19 @@ public:
 	}
 	
 	float getOffset() {
+
 		return ofMap(frameNum, slideTime*frameDuration, frameDuration, 0, 1, true);
 	}
+	
+	bool isOnVideoFeed() {
+		if(clips.size()==0) return true;
+		if(currVideo==-1) return true;
+		if(currVideo<clips.size()) {
+			return clips[currVideo].isAVideoFeed();
+		}
+		return false;
+	}
+	
 	
 	void draw() {
 		
@@ -186,7 +229,7 @@ public:
 				float a = ofMap(ofGetElapsedTimef() - nextVideoToVideoFeedStartTime,
 								0, 0.4, 0, 1, true);
 				glColor4f(1,1,1,1.f-a);
-				if(a<1 && whatNextVideoWas!=-1) clips[whatNextVideoWas].draw(nextVideoX, 0);
+				if(a<1 && whatNextVideoWas>-1 &&  whatNextVideoWas<clips.size()) clips[whatNextVideoWas].draw(nextVideoX, 0);
 				glColor4f(1,1,1,a);
 				videoFeed.draw(nextVideoX, 0);
 			}

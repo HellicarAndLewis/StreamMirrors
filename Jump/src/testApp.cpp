@@ -9,70 +9,40 @@
 
 
 void testApp::setupGraphics() {
-	ofSetFrameRate(25);
+	ofSetFrameRate(30);
 	ofSetVerticalSync(true);
 	ofEnableAlphaBlending();
 }
 
-void testApp::setupVision() {
-	cam.setup();
-	VISION_WIDTH = cam.getWidth();
-	VISION_HEIGHT = cam.getHeight();
-	
-	videoFeedData = new unsigned char[VISION_WIDTH*VISION_HEIGHT*4];
-	videoFeed.allocate(VISION_HEIGHT, VISION_WIDTH, GL_RGBA);
-	colorImg.allocate(VISION_HEIGHT, VISION_WIDTH);
-	depthImg.allocate(VISION_HEIGHT, VISION_WIDTH);
-	threshImg.allocate(VISION_HEIGHT, VISION_WIDTH);
-	bgImg.allocate(VISION_HEIGHT, VISION_WIDTH);
-	rgbRot = new unsigned char[VISION_WIDTH * VISION_HEIGHT * 3];
 
-	bgHysteresis = 6;
-	jumpDetector.setup();
-}
 
 //--------------------------------------------------------------
 void testApp::setup(){
 
 	setupGraphics();
 	setupVision();
-	fbo.allocate(VISION_HEIGHT, VISION_WIDTH, GL_RGBA);
-	syphon.setName("openframeworks");
-	learnBackground = true;
+	
+	state = WAITING_FOR_PERSON;
+	debugFont.loadFont("Impact.ttf", 60);
 
 	lastTimeFinishedRecording = -1000;
-
 
 	video = new RamVideo();
 	video->setup(480, 640, MAX_VIDEO_LENGTH);
 
-	rotateClockwise = false;
-	flipX = true;
-	triggerDepth = 100;
-	drawDebug = false;
-	dilations = 0;
-	blurs = 0;
-	blurSize = 1;
 	
+	drawDebug = false;
+	
+	
+	nearThreshold = 100;
 	minRecordingInterval = 4;
 	
 	carousel.setVideoFeed(&videoFeed);
 	
 	
 	gui.addToggle("Draw Debug", drawDebug);
-	gui.addToggle("Rotate Clockwise", rotateClockwise);
-	gui.addToggle("Flip X", flipX);
-	gui.addContent("Color", colorImg);
-	gui.addContent("Depth", depthImg);
-	gui.addContent("Thresh", threshImg);
-	gui.addToggle("Learn BG", learnBackground); 
-	gui.addSlider("BG Hysteresis", bgHysteresis, 0, 20);
 	
-	gui.addTitle("Compositing");
-	gui.addSlider("erosions", erosions, 0, 10);
-	gui.addSlider("dilations", dilations, 0, 10);
-	gui.addSlider("blurs", blurs, 0, 10);
-	gui.addSlider("blur size", blurSize, 1, 10);
+	
 	gui.addSlider("Min Time between recordings", minRecordingInterval, 2, 20);
 	gui.addSlider("Carousel video duration", carousel.frameDuration, 10, 200);
 	gui.addSlider("Carousel inactivity delay", carouselDelay, 0, 5);
@@ -81,8 +51,9 @@ void testApp::setup(){
 	gui.addSlider("Overlap", carousel.overlap, 0, 100);
 	gui.addTitle("Triggers");
 	gui.addSlider("Trigger Height", jumpDetector.triggerHeight, 0, VISION_WIDTH);
-	gui.addSlider("Trigger Depth", triggerDepth, 0, 255);
+	gui.addSlider("Near Threshold", jumpDetector.nearThreshold, 0, 255);
 
+	gui.addSlider("Far Threshold", farThreshold, 0, 255); 
 	gui.setAlignRight(true);
 	gui.setAutoSave(true);
 	gui.loadFromXML();
@@ -115,66 +86,22 @@ void testApp::finishedRecording() {
 }
 
 
-void testApp::doVision() {
-	
-	// rotate the pixels from the camera
-	cam.update();
-	unsigned char *rgb = cam.getPixels();
-	unsigned char *depth = cam.getDepthPixels();
-	if(rgb!=NULL) {
-		rotateRgb90(rgb, rgbRot, rotateClockwise, flipX);
-		colorImg.setFromPixels(rgbRot, VISION_HEIGHT, VISION_WIDTH);
-	}
-	if(depth!=NULL) {
-		rotate90(depth, rgbRot, rotateClockwise, flipX);
-		depthImg.setFromPixels(rgbRot, VISION_HEIGHT, VISION_WIDTH);
-	}
-	if(learnBackground) {
-		learnBackground = false;
-		bgImg = depthImg;
-	}
-	
-	int numPix = VISION_WIDTH * VISION_HEIGHT;
-	depth = depthImg.getPixels();
-	unsigned char *bg = bgImg.getPixels();
-	
-	
-	// remove any pixels that are smaller than the background
-	for(int i = 0; i < numPix; i++) {
-		if(depth[i]<bg[i]+bgHysteresis) {	// background hysteresis, you've got to be at least 
-											// bgHysteresis away
-											// from the background to count as foreground.
-			depth[i] = 0;
-		}
-	}
-	
-	// do thresholding and tidying up on the depth data.
-	threshImg = depthImg;
-	threshImg.threshold(triggerDepth);
-	for(int i = 0; i < erosions; i++) {
-		threshImg.erode_3x3();
-	}
-	for(int i = 0; i < dilations; i++) {
-		threshImg.dilate_3x3();
-	}
-	for(int i = 0; i < blurs; i++) {
-		threshImg.blur(blurSize*2+1);
-	}
-}
-
-
-
 
 // just alpha out the person and upload to texture
 void testApp::doCompositing() {
 	int numPix = VISION_WIDTH * VISION_HEIGHT;
 	unsigned char *img	= colorImg.getPixels();
 	unsigned char *t = threshImg.getPixels();
+	int i4 = 0;
+	int i3 = 0;
 	for(int i = 0; i < numPix; i++) {
-		videoFeedData[i*4] = (img[i*3]*t[i])/255;
-		videoFeedData[i*4+1] = (img[i*3+1]*t[i])/255;
-		videoFeedData[i*4+2] = (img[i*3+2]*t[i])/255;
-		videoFeedData[i*4+3] = t[i];
+
+		videoFeedData[i4] = (img[i3]*t[i])/255;
+		videoFeedData[i4+1] = (img[i3+1]*t[i])/255;
+		videoFeedData[i4+2] = (img[i3+2]*t[i])/255;
+		videoFeedData[i4+3] = t[i];
+		i4 += 4;
+		i3 += 3;
 	}
 	videoFeed.loadData(videoFeedData, VISION_HEIGHT, VISION_WIDTH, GL_RGBA);
 }
@@ -187,8 +114,29 @@ void testApp::update(){
 	
 	doVision();
 	doCompositing();
-	activityMonitor.update(threshImg);
-	jumpDetector.update(threshImg);// mouseIsDown);
+	activityMonitor.update(threshImg); // don't know if we're using this one??
+	jumpDetector.update(threshImg, depthImg);// mouseIsDown);
+	if(state==WAITING_FOR_PERSON) {
+		if(jumpDetector.personReady()) {
+			state = READY_WITH_PERSON;
+		}
+	} else if(state==READY_WITH_PERSON) {
+		if(jumpDetector.personJumping()) {
+			state = RECORDING;
+			// start recording here
+		} else if(!jumpDetector.personPresent()) {
+			state = WAITING_FOR_PERSON;
+		}
+	} else if(state==RECORDING) {
+		if(jumpDetector.personReady()) {
+			state = WAITING_FOR_PERSON_TO_GO;
+			// stop recording here
+		}
+	} else if(state==WAITING_FOR_PERSON_TO_GO) {
+		if(!jumpDetector.personPresent()) {
+			state = WAITING_FOR_PERSON;
+		}
+	}
 	
 	/*
 	// if there's been no movement for a while, (and we're not recording)
@@ -268,14 +216,31 @@ void testApp::draw(){
 		// but we still need to offset it so it
 		// sits in the centre
 		glScalef(scale, scale, 1);
-	ofSetHexColor(0xFFFFFF);
-		fbo.draw(0,0);
+	
+		carousel.draw();
+		drawOverlays();
+		jumpDetector.drawDebug();
 	}
 	glPopMatrix();
 	
-	syphon.publishTexture(&fbo.getTextureReference(0));
-	
-	
+	string st = "";
+	switch(state) {
+		case WAITING_FOR_PERSON:
+			st = "WAITING";
+			break;
+		case READY_WITH_PERSON:
+			st = "READY!";
+			break;
+		case RECORDING:
+			st = "RECORDING";
+			break;
+		case WAITING_FOR_PERSON_TO_GO:
+			st = "THANKS, BYE";
+			break;
+	}
+	ofSetHexColor(0xDD33EE);
+	debugFont.drawString(st, 20, ofGetHeight()-20);
+	jumpDetector.drawDebug();
 	if(gui.isOn()) {
 		gui.draw();
 	}

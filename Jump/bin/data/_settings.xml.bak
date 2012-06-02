@@ -17,7 +17,7 @@
     </Toggle_Learn_BG>
     <SliderInt_BG_Hysteresis>
         <name>BG Hysteresis</name>
-        <value>4</value>
+        <value>3</value>
     </SliderInt_BG_Hysteresis>
     <SliderInt_erosions>
         <name>erosions</name>
@@ -59,8 +59,12 @@
         <name>Trigger Height</name>
         <value>569.6</value>
     </SliderFloat_Trigger_Height>
-    <SliderInt_Trigger_Depth>
-        <name>Trigger Depth</name>
-        <value>90</value>
-    </SliderInt_Trigger_Depth>
+    <SliderFloat_Near_Threshold>
+        <name>Near Threshold</name>
+        <value>91.8</value>
+    </SliderFloat_Near_Threshold>
+    <SliderInt_Far_Threshold>
+        <name>Far Threshold</name>
+        <value>112</value>
+    </SliderInt_Far_Threshold>
 </controls>
