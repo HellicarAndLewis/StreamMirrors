@@ -31,6 +31,9 @@ public:
 		}
 	}
 	
+	bool isAVideoFeed() {
+		return isVideoFeed;
+	}
 	void draw(float x, float y) {
 		if(isVideoFeed) {
 			videoFeed->draw(x, y);

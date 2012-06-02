@@ -9,7 +9,7 @@
 
 
 void testApp::setupGraphics() {
-	ofSetFrameRate(25);
+	ofSetFrameRate(30);
 	ofSetVerticalSync(true);
 	ofEnableAlphaBlending();
 }
@@ -154,7 +154,7 @@ void testApp::doCompositing() {
 
 //--------------------------------------------------------------
 void testApp::update(){
-	ofBackground(255);
+	ofBackground(0);
 
 	
 	doVision();
@@ -182,8 +182,8 @@ void testApp::update(){
 		if(!presenceDetector.present()) {
 			holdCount = 0;
 		}
-		
-		if(!recording && presenceDetector.present()) {
+		printf("%d\n", carousel.isOnVideoFeed());
+		if(!recording && presenceDetector.present() && carousel.isOnVideoFeed()) {
 			holdCount++;
 			if(holdCount>HOLD_COUNT) {
 				video->clear();

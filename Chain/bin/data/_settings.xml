@@ -13,11 +13,11 @@
     </Toggle_Flip_X>
     <SliderInt_dilations>
         <name>dilations</name>
-        <value>2</value>
+        <value>1</value>
     </SliderInt_dilations>
     <SliderInt_blurs>
         <name>blurs</name>
-        <value>2</value>
+        <value>1</value>
     </SliderInt_blurs>
     <SliderInt_blur_size>
         <name>blur size</name>
@@ -37,7 +37,7 @@
     </SliderFloat_Carousel_inactivity_delay>
     <SliderFloat_Slide_time_pct>
         <name>Slide time pct</name>
-        <value>0.73875</value>
+        <value>0.52975</value>
     </SliderFloat_Slide_time_pct>
     <SliderFloat_Overlap>
         <name>Overlap</name>
@@ -57,6 +57,6 @@
     </SliderFloat_Triggers_Radius>
     <SliderInt_Trigger_Depth>
         <name>Trigger Depth</name>
-        <value>169</value>
+        <value>127</value>
     </SliderInt_Trigger_Depth>
 </controls>
