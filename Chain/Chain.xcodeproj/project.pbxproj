@@ -44,6 +44,7 @@
 		EA6034A4156D5C5D00855F80 /* testAppRotatePixels.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA603490156D5C5D00855F80 /* testAppRotatePixels.cpp */; };
 		EA6034A5156D5C5D00855F80 /* KinectOrCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA603495156D5C5D00855F80 /* KinectOrCamera.cpp */; };
 		EABE506E157A3D1500FD067F /* testAppVision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EABE506C157A3D1500FD067F /* testAppVision.cpp */; };
+		EABE5085157A4BDA00FD067F /* RamVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EABE5084157A4BDA00FD067F /* RamVideo.cpp */; };
 		EAEDDE23156A6CBC0016A7F7 /* ofxMSAInteractiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAEDDDF0156A6CBC0016A7F7 /* ofxMSAInteractiveObject.cpp */; };
 		EAEDDE26156A6CBC0016A7F7 /* ofxSimpleGuiButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAEDDDFF156A6CBC0016A7F7 /* ofxSimpleGuiButton.cpp */; };
 		EAEDDE27156A6CBC0016A7F7 /* ofxSimpleGuiColorPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAEDDE01156A6CBC0016A7F7 /* ofxSimpleGuiColorPicker.cpp */; };
@@ -176,6 +177,7 @@
 		EA603495156D5C5D00855F80 /* KinectOrCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KinectOrCamera.cpp; sourceTree = "<group>"; };
 		EA603496156D5C5D00855F80 /* KinectOrCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectOrCamera.h; sourceTree = "<group>"; };
 		EABE506C157A3D1500FD067F /* testAppVision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testAppVision.cpp; sourceTree = "<group>"; };
+		EABE5084157A4BDA00FD067F /* RamVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RamVideo.cpp; sourceTree = "<group>"; };
 		EAEDDDE4156A6CBC0016A7F7 /* changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = changelog.txt; sourceTree = "<group>"; };
 		EAEDDDED156A6CBC0016A7F7 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
 		EAEDDDEE156A6CBC0016A7F7 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				EA603492156D5C5D00855F80 /* RamVideo.h */,
+				EABE5084157A4BDA00FD067F /* RamVideo.cpp */,
 			);
 			path = video;
 			sourceTree = "<group>";
@@ -1069,6 +1072,7 @@
 				EA6034A4156D5C5D00855F80 /* testAppRotatePixels.cpp in Sources */,
 				EA6034A5156D5C5D00855F80 /* KinectOrCamera.cpp in Sources */,
 				EABE506E157A3D1500FD067F /* testAppVision.cpp in Sources */,
+				EABE5085157A4BDA00FD067F /* RamVideo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

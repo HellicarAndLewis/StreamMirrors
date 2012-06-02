@@ -9,11 +9,11 @@
 #ifndef opencvExample_RamVideo_h
 #define opencvExample_RamVideo_h
 #include "ofThread.h"
-
+#include "ofMain.h"
 
 class RamVideo: public ofThread {
 public:
-	static int referenceCount;
+
 	~RamVideo();	
 	void clear();
 	bool done;

@@ -102,6 +102,7 @@ void testApp::doCompositing() {
 void testApp::update(){
 	ofBackground(0);
 
+	carousel.checkForSize();
 	
 	doVision();
 	doCompositing();
@@ -128,7 +129,7 @@ void testApp::update(){
 		if(!presenceDetector.present()) {
 			holdCount = 0;
 		}
-		printf("%d\n", carousel.isOnVideoFeed());
+
 		if(!recording && presenceDetector.present() && carousel.isOnVideoFeed()) {
 			holdCount++;
 			if(holdCount>HOLD_COUNT) {
