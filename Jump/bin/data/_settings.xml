@@ -11,13 +11,25 @@
         <name>Flip X</name>
         <value>0</value>
     </Toggle_Flip_X>
+    <Toggle_Learn_BG>
+        <name>Learn BG</name>
+        <value>0</value>
+    </Toggle_Learn_BG>
+    <SliderInt_BG_Hysteresis>
+        <name>BG Hysteresis</name>
+        <value>4</value>
+    </SliderInt_BG_Hysteresis>
+    <SliderInt_erosions>
+        <name>erosions</name>
+        <value>2</value>
+    </SliderInt_erosions>
     <SliderInt_dilations>
         <name>dilations</name>
-        <value>2</value>
+        <value>4</value>
     </SliderInt_dilations>
     <SliderInt_blurs>
         <name>blurs</name>
-        <value>2</value>
+        <value>1</value>
     </SliderInt_blurs>
     <SliderInt_blur_size>
         <name>blur size</name>
@@ -45,10 +57,10 @@
     </SliderFloat_Overlap>
     <SliderFloat_Trigger_Height>
         <name>Trigger Height</name>
-        <value>518.4</value>
+        <value>569.6</value>
     </SliderFloat_Trigger_Height>
     <SliderInt_Trigger_Depth>
         <name>Trigger Depth</name>
-        <value>209</value>
+        <value>90</value>
     </SliderInt_Trigger_Depth>
 </controls>

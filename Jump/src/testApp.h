@@ -15,7 +15,7 @@
 #define MAX_VIDEO_LENGTH 50
 #define MIN_VIDEO_LENGTH 4
 
-
+#include "ofxSyphon.h"
 
 class testApp : public ofBaseApp{
 
@@ -40,9 +40,12 @@ public:
 	KinectOrCamera cam;
 
 	ofxCvColorImage			colorImg;
+	ofxCvGrayscaleImage		bgImg;
 	ofxCvGrayscaleImage		depthImg;
 	ofxCvGrayscaleImage		threshImg;
 	
+	bool learnBackground;
+	int bgHysteresis;
 	
 	void rotateRgb90(unsigned char *a, unsigned char *b, bool clockwise, bool flipX);
 	void rotate90(unsigned char *a, unsigned char *b, bool clockwise, bool flipX);
@@ -53,6 +56,9 @@ public:
 	
 	vector<RamVideo*> videos;
 
+	ofFbo fbo;
+	ofxSyphonServer syphon;
+	
 	float lastTimeFinishedRecording;
 	void loadEverything();
 	void saveEverything();
@@ -66,8 +72,10 @@ public:
 	int triggerDepth;
 	
 	bool recording;
-
+	
+	int erosions;
 	int dilations;
+	
 	int blurs;
 	int blurSize;
 

@@ -24,7 +24,11 @@ void testApp::setupVision() {
 	colorImg.allocate(VISION_HEIGHT, VISION_WIDTH);
 	depthImg.allocate(VISION_HEIGHT, VISION_WIDTH);
 	threshImg.allocate(VISION_HEIGHT, VISION_WIDTH);
+	bgImg.allocate(VISION_HEIGHT, VISION_WIDTH);
 	rgbRot = new unsigned char[VISION_WIDTH * VISION_HEIGHT * 3];
+
+	bgHysteresis = 6;
+	jumpDetector.setup();
 }
 
 //--------------------------------------------------------------
@@ -32,7 +36,9 @@ void testApp::setup(){
 
 	setupGraphics();
 	setupVision();
-	
+	fbo.allocate(VISION_HEIGHT, VISION_WIDTH, GL_RGBA);
+	syphon.setName("openframeworks");
+	learnBackground = true;
 
 	lastTimeFinishedRecording = -1000;
 
@@ -59,7 +65,11 @@ void testApp::setup(){
 	gui.addContent("Color", colorImg);
 	gui.addContent("Depth", depthImg);
 	gui.addContent("Thresh", threshImg);
+	gui.addToggle("Learn BG", learnBackground); 
+	gui.addSlider("BG Hysteresis", bgHysteresis, 0, 20);
+	
 	gui.addTitle("Compositing");
+	gui.addSlider("erosions", erosions, 0, 10);
 	gui.addSlider("dilations", dilations, 0, 10);
 	gui.addSlider("blurs", blurs, 0, 10);
 	gui.addSlider("blur size", blurSize, 1, 10);
@@ -119,18 +129,37 @@ void testApp::doVision() {
 		rotate90(depth, rgbRot, rotateClockwise, flipX);
 		depthImg.setFromPixels(rgbRot, VISION_HEIGHT, VISION_WIDTH);
 	}
+	if(learnBackground) {
+		learnBackground = false;
+		bgImg = depthImg;
+	}
 	
+	int numPix = VISION_WIDTH * VISION_HEIGHT;
+	depth = depthImg.getPixels();
+	unsigned char *bg = bgImg.getPixels();
+	
+	
+	// remove any pixels that are smaller than the background
+	for(int i = 0; i < numPix; i++) {
+		if(depth[i]<bg[i]+bgHysteresis) {	// background hysteresis, you've got to be at least 
+											// bgHysteresis away
+											// from the background to count as foreground.
+			depth[i] = 0;
+		}
+	}
 	
 	// do thresholding and tidying up on the depth data.
 	threshImg = depthImg;
 	threshImg.threshold(triggerDepth);
+	for(int i = 0; i < erosions; i++) {
+		threshImg.erode_3x3();
+	}
 	for(int i = 0; i < dilations; i++) {
 		threshImg.dilate_3x3();
 	}
 	for(int i = 0; i < blurs; i++) {
 		threshImg.blur(blurSize*2+1);
-	}   
-
+	}
 }
 
 
@@ -161,7 +190,7 @@ void testApp::update(){
 	activityMonitor.update(threshImg);
 	jumpDetector.update(threshImg);// mouseIsDown);
 	
-	
+	/*
 	// if there's been no movement for a while, (and we're not recording)
 	// start spinning the carousel
 	if(!carousel.isScrolling() && activityMonitor.getTimeSinceLastMove()>carouselDelay && !recording) {
@@ -202,7 +231,8 @@ void testApp::update(){
 				finishedRecording();
 			}
 		}
-	}
+	}*/
+	
 	ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
 }
 
@@ -223,6 +253,14 @@ void testApp::draw(){
 	ofSetHexColor(0xFFFFFF);
 	
 	
+	fbo.begin();
+	ofClear(0,0,0,0);
+	ofSetHexColor(0xFFFFFF);
+	carousel.draw();
+	drawOverlays();
+	//jumpDetector.drawDebug();
+	fbo.end();
+	
 	glPushMatrix();
 	{
 		// TODO:
@@ -230,12 +268,12 @@ void testApp::draw(){
 		// but we still need to offset it so it
 		// sits in the centre
 		glScalef(scale, scale, 1);
-	
-		carousel.draw();
-		drawOverlays();
+	ofSetHexColor(0xFFFFFF);
+		fbo.draw(0,0);
 	}
 	glPopMatrix();
 	
+	syphon.publishTexture(&fbo.getTextureReference(0));
 	
 	
 	if(gui.isOn()) {
