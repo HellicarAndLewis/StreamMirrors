@@ -1,7 +1,7 @@
 <controls>
     <Toggle_Rotate_Clockwise>
         <name>Rotate Clockwise</name>
-        <value>1</value>
+        <value>0</value>
     </Toggle_Rotate_Clockwise>
     <Toggle_Flip_X>
         <name>Flip X</name>

@@ -5,14 +5,22 @@
 #include "ofxOpenCv.h"
 #include "KinectOrCamera.h"
 #include "RamVideo.h"
+
+
+// 40 videos of 640x480 for 60 frames are 70MB each, so 40 videos is 3GB
+#define MAX_NUM_VIDEOS 40
+
+
 #include "Carousel.h"
 #include "ActivityMonitor.h"
 #include "PresenceDetector.h"
 
+#include "DotProcessor.h"
+
 
 
 #define HOLD_COUNT 80
-#define MAX_VIDEO_LENGTH 50
+#define MAX_VIDEO_LENGTH 60
 #define MIN_VIDEO_LENGTH 15
 
 
@@ -93,5 +101,6 @@ public:
 	ofTexture videoFeed;
 	unsigned char *videoFeedData;
 	float carouselDelay;
+    DotProcessor dots;
 };
 

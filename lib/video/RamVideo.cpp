@@ -103,6 +103,7 @@ void RamVideo::createDir(string path) {
 
 void RamVideo::save(string path) {
 	ofImage img;
+	img.setUseTexture(false);
 	img.allocate(width, height, OF_IMAGE_COLOR_ALPHA);
 	createDir(path);
 	
@@ -113,7 +114,7 @@ void RamVideo::save(string path) {
 		while(num.size()<5) {
 			num = "0" + num;
 		}
-		img.saveImage(path + "/" + num + ".png");
+		img.saveImage(path + "/" + num + ".tiff");
 	}
 	printf("\n");
 }

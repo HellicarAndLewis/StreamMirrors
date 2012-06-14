@@ -11,11 +11,11 @@
 #include "ofMain.h"
 
 #include "ofThread.h"
-
+#include "ofMain.h"
 
 class RamVideo: public ofThread {
 public:
-	static int referenceCount;
+
 	~RamVideo();	
 	void clear();
 	bool done;

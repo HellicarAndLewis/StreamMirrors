@@ -51,6 +51,7 @@ void testApp::setup(){
 	gui.addSlider("Triggers Vertical", presenceDetector.triggersY, 0, VISION_WIDTH);
 	gui.addSlider("Triggers Radius", presenceDetector.triggerRadius, 0, 100);
 	gui.addSlider("Trigger Depth", farThreshold, 0, 255);
+    dots.setup();
 	gui.setAlignRight(true);
 	gui.setAutoSave(true);
 	gui.loadFromXML();
@@ -102,6 +103,7 @@ void testApp::doCompositing() {
 void testApp::update(){
 	ofBackground(0);
 
+	carousel.checkForSize();
 	
 	doVision();
 	doCompositing();
@@ -128,7 +130,7 @@ void testApp::update(){
 		if(!presenceDetector.present()) {
 			holdCount = 0;
 		}
-		printf("%d\n", carousel.isOnVideoFeed());
+
 		if(!recording && presenceDetector.present() && carousel.isOnVideoFeed()) {
 			holdCount++;
 			if(holdCount>HOLD_COUNT) {

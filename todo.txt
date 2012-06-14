@@ -1,0 +1,4 @@
+- make more accurate limit for number of videos
+- roll in shader
+- tidy up chain
+- 
