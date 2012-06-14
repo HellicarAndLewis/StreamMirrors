@@ -1,8 +1,4 @@
 <controls>
-    <Toggle_Draw_Debug>
-        <name>Draw Debug</name>
-        <value>1</value>
-    </Toggle_Draw_Debug>
     <Toggle_Rotate_Clockwise>
         <name>Rotate Clockwise</name>
         <value>1</value>
@@ -35,6 +31,10 @@
         <name>blur size</name>
         <value>2</value>
     </SliderInt_blur_size>
+    <Toggle_Draw_Debug>
+        <name>Draw Debug</name>
+        <value>1</value>
+    </Toggle_Draw_Debug>
     <SliderFloat_Min_Time_between_recordings>
         <name>Min Time between recordings</name>
         <value>6.5</value>
@@ -67,4 +67,24 @@
         <name>Far Threshold</name>
         <value>112</value>
     </SliderInt_Far_Threshold>
+    <Toggle_Enable>
+        <name>Enable</name>
+        <value>1</value>
+    </Toggle_Enable>
+    <SliderFloat_sharpness>
+        <name>sharpness</name>
+        <value>33.5</value>
+    </SliderFloat_sharpness>
+    <SliderFloat_brightness_scale>
+        <name>brightness scale</name>
+        <value>0</value>
+    </SliderFloat_brightness_scale>
+    <SliderFloat_pixScaleX>
+        <name>pixScaleX</name>
+        <value>93.875</value>
+    </SliderFloat_pixScaleX>
+    <SliderFloat_pixScaleY>
+        <name>pixScaleY</name>
+        <value>91.9</value>
+    </SliderFloat_pixScaleY>
 </controls>

@@ -1,3 +1,9 @@
 - make more accurate limit for number of videos
 - fix orientation
 - thanks
+
+
+JUMP
+---
+- fix interaction
+- fix lay6out

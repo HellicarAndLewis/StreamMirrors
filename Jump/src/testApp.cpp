@@ -12,6 +12,7 @@ void testApp::setupGraphics() {
 	ofSetFrameRate(30);
 	ofSetVerticalSync(true);
 	ofEnableAlphaBlending();
+	frame.loadImage("frame.png");
 }
 
 
@@ -54,6 +55,7 @@ void testApp::setup(){
 	gui.addSlider("Near Threshold", jumpDetector.nearThreshold, 0, 255);
 
 	gui.addSlider("Far Threshold", farThreshold, 0, 255); 
+	dots.setup(480, 640);
 	gui.setAlignRight(true);
 	gui.setAutoSave(true);
 	gui.loadFromXML();
@@ -109,7 +111,7 @@ void testApp::doCompositing() {
 
 //--------------------------------------------------------------
 void testApp::update(){
-	ofBackground(255);
+	ofBackground(0);
 
 	
 	doVision();
@@ -191,37 +193,41 @@ void testApp::draw(){
 
 	
 	// what do we scale to?
-	float scale = (float)ofGetHeight()/(float)colorImg.getHeight();
-	float newWidth = scale * (float) colorImg.getWidth();
-	if(newWidth>ofGetWidth()) {
-		scale = (float) ofGetWidth()/(float) colorImg.getWidth();
-	}
-	
 	
 	ofSetHexColor(0xFFFFFF);
 	
+	float scale = ofGetHeight()/frame.getHeight();
 	
-	fbo.begin();
-	ofClear(0,0,0,0);
+	
+	
 	ofSetHexColor(0xFFFFFF);
-	carousel.draw();
-	drawOverlays();
-	//jumpDetector.drawDebug();
-	fbo.end();
-	
 	glPushMatrix();
 	{
-		// TODO:
-		// this scales the image as big as it can go
-		// but we still need to offset it so it
-		// sits in the centre
 		glScalef(scale, scale, 1);
-	
-		carousel.draw();
-		drawOverlays();
-		jumpDetector.drawDebug();
+		// scale to the size of the video
+		scale = (float)frame.getWidth() / (float)videoFeed.getWidth();
+		float xx = ((float)videoFeed.getWidth() * (float)frame.getHeight()) / (float)frame.getWidth();
+		float yOff = (xx - videoFeed.getHeight())/2.f;
+		glPushMatrix();
+		{
+			dots.begin();
+			ofClear(0,0,0,0);
+			ofSetHexColor(0xFFFFFF);
+			carousel.draw();
+			dots.end();
+		
+			drawOverlays();
+			jumpDetector.drawDebug();
+		}
+		glPopMatrix();
+			
+			
+			
+		glColor3f(1,1,1);
+		frame.draw(0, 0);
 	}
 	glPopMatrix();
+	
 	
 	string st = "";
 	switch(state) {
@@ -240,7 +246,7 @@ void testApp::draw(){
 	}
 	ofSetHexColor(0xDD33EE);
 	debugFont.drawString(st, 20, ofGetHeight()-20);
-	jumpDetector.drawDebug();
+	//jumpDetector.drawDebug();
 	if(gui.isOn()) {
 		gui.draw();
 	}

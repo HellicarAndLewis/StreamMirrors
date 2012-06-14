@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0270C23A158A463000A0E5BD /* RamVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0270C239158A463000A0E5BD /* RamVideo.cpp */; };
 		0b2e55fee13134ce9b57d3bffd6d5dab /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8a4dd23693dfab8ec05faa5d62c49d8c /* ofxCvShortImage.cpp */; };
 		134078e8f8f4f24368b31f26166fec03 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 057122a817d12571f8c0c7a4d522b879 /* ofxCvGrayscaleImage.cpp */; };
 		259da76c028adaa20996723e102a6ccd /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ce9c7160245b19131dae61282ee6cb53 /* ofxCvColorImage.cpp */; };
@@ -108,6 +109,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0270C238158A45B800A0E5BD /* DotProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DotProcessor.h; path = ../../lib/graphics/DotProcessor.h; sourceTree = "<group>"; };
+		0270C239158A463000A0E5BD /* RamVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RamVideo.cpp; sourceTree = "<group>"; };
 		057122a817d12571f8c0c7a4d522b879 /* ofxCvGrayscaleImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxCvGrayscaleImage.cpp; path = ../../../addons/ofxOpenCv/src/ofxCvGrayscaleImage.cpp; sourceTree = SOURCE_ROOT; };
 		3c232045833313b99efe0b14840b6108 /* ofxCvMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxCvMain.h; path = ../../../addons/ofxOpenCv/src/ofxCvMain.h; sourceTree = SOURCE_ROOT; };
 		516717f84c0146512c47a3ec3f268851 /* ofxCvHaarFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxCvHaarFinder.h; path = ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h; sourceTree = SOURCE_ROOT; };
@@ -387,6 +390,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				0270C238158A45B800A0E5BD /* DotProcessor.h */,
 				EADFD01C156FA6800057CDDB /* JumpDetector.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				EABE506F157A3DAF00FD067F /* testAppVision.cpp */,
@@ -475,6 +479,7 @@
 			isa = PBXGroup;
 			children = (
 				EA603492156D5C5D00855F80 /* RamVideo.h */,
+				0270C239158A463000A0E5BD /* RamVideo.cpp */,
 			);
 			path = video;
 			sourceTree = "<group>";
@@ -1069,6 +1074,7 @@
 				EA6034A4156D5C5D00855F80 /* testAppRotatePixels.cpp in Sources */,
 				EA6034A5156D5C5D00855F80 /* KinectOrCamera.cpp in Sources */,
 				EABE5070157A3DAF00FD067F /* testAppVision.cpp in Sources */,
+				0270C23A158A463000A0E5BD /* RamVideo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

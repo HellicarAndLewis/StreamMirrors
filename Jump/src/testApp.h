@@ -14,8 +14,8 @@
 #define HOLD_COUNT 80
 #define MAX_VIDEO_LENGTH 50
 #define MIN_VIDEO_LENGTH 4
+#include "DotProcessor.h"
 
-#include "ofxSyphon.h"
 enum STATE {
 	WAITING_FOR_PERSON,
 	READY_WITH_PERSON,
@@ -26,6 +26,7 @@ enum STATE {
 class testApp : public ofBaseApp{
 
 public:
+	DotProcessor dots;
 	void setup();
 	void update();
 	void draw();
@@ -70,9 +71,6 @@ public:
 	RamVideo *video;
 	
 	vector<RamVideo*> videos;
-
-	ofFbo fbo;
-	ofxSyphonServer syphon;
 	
 	float lastTimeFinishedRecording;
 	void loadEverything();
@@ -82,6 +80,7 @@ public:
 	bool rotateClockwise;
 	bool flipX;
 	
+	ofImage frame;
 
 	bool drawDebug;
 	int nearThreshold;

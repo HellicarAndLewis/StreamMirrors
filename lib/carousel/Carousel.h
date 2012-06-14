@@ -12,7 +12,7 @@
 #include "RamVideo.h"
 #include "Tween.h"
 #include "animation.h"
-
+#define MAX_NUM_VIDEOS 40
 
 class Carousel {
 public:
