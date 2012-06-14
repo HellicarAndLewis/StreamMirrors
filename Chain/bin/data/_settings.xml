@@ -57,7 +57,7 @@
     </SliderFloat_Slide_time_pct>
     <SliderFloat_Overlap>
         <name>Overlap</name>
-        <value>0</value>
+        <value>145.6</value>
     </SliderFloat_Overlap>
     <SliderFloat_Triggers_Horizontal>
         <name>Triggers Horizontal</name>
@@ -73,7 +73,7 @@
     </SliderFloat_Triggers_Radius>
     <SliderInt_Trigger_Depth>
         <name>Trigger Depth</name>
-        <value>128</value>
+        <value>87</value>
     </SliderInt_Trigger_Depth>
     <Toggle_save_all_videos>
         <name>save all videos</name>
@@ -89,18 +89,18 @@
     </Toggle_Enable>
     <SliderFloat_sharpness>
         <name>sharpness</name>
-        <value>13</value>
+        <value>7.5</value>
     </SliderFloat_sharpness>
     <SliderFloat_brightness_scale>
         <name>brightness scale</name>
-        <value>0.8</value>
+        <value>0.45</value>
     </SliderFloat_brightness_scale>
     <SliderFloat_pixScaleX>
         <name>pixScaleX</name>
-        <value>149.3</value>
+        <value>198.55</value>
     </SliderFloat_pixScaleX>
     <SliderFloat_pixScaleY>
         <name>pixScaleY</name>
-        <value>190.25</value>
+        <value>196.575</value>
     </SliderFloat_pixScaleY>
 </controls>

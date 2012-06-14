@@ -65,7 +65,7 @@ void testApp::setup(){
 	gui.addSlider("Carousel inactivity delay", carouselDelay, 0, 5);
 	gui.addSlider("Slide time pct", carousel.slideTime, 0.05, 1);
 	gui.addTitle("Carousel");
-	gui.addSlider("Overlap", carousel.overlap, 0, 100);
+	gui.addSlider("Overlap", carousel.overlap, 0, 260);
 	gui.addTitle("Triggers");
 	gui.addSlider("Triggers Horizontal", presenceDetector.triggersX, 0, VISION_HEIGHT);
 	gui.addSlider("Triggers Vertical", presenceDetector.triggersY, 0, VISION_WIDTH);
@@ -201,7 +201,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	
-	
+	ofBackground(150, 150, 150);
 	// what do we scale to?
 	
 	float scale = ofGetHeight()/frame.getHeight();

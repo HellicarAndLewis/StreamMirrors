@@ -23,8 +23,8 @@ public:
         gui.addToggle("Enable", enable);
         gui.addSlider("sharpness", sharpness, 0, 100);
         gui.addSlider("brightness scale", brightnessScale, -1, 1.5);
-        gui.addSlider("pixScaleX", pixScaleX, 5, 200);
-        gui.addSlider("pixScaleY", pixScaleY, 5, 200);
+        gui.addSlider("pixScaleX", pixScaleX, 5, 400);
+        gui.addSlider("pixScaleY", pixScaleY, 5, 400);
 		fbo.allocate(width, height, GL_RGBA);
     }
     
