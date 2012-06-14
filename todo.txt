@@ -2,3 +2,8 @@
 - fix orientation
 - tidy up chain
 - add the artwork
+- countdown
+- thanks
+- hands
+- save unsaved videos
+- clear videos

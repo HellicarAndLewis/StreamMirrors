@@ -15,13 +15,17 @@
 
 class RamVideo: public ofThread {
 public:
-
+	RamVideo();
 	~RamVideo();	
 	void clear();
 	bool done;
 	
 	void dump();	
+	
+	void dumpBlocking();
+	
 	bool doneDumping();
+	
 	
 	void threadedFunction();	
 	int getLength();

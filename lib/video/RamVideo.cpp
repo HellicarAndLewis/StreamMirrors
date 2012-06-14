@@ -8,6 +8,9 @@
 
 #include "RamVideo.h"
 
+RamVideo::RamVideo() {
+	done = false;
+}
 
 RamVideo::~RamVideo() {
 		clear();
@@ -22,14 +25,17 @@ void RamVideo::clear() {
 
 
 void RamVideo::dump() {
-	done = false;
 	startThread();
+}
+void RamVideo::dumpBlocking() {
+	threadedFunction();
 }
 
 bool RamVideo::doneDumping() {
 	return done;
 }
 void RamVideo::threadedFunction() {
+	if(done) return;
 	string filename = ofGetTimestampString();
 	save(filename);
 	done = true;

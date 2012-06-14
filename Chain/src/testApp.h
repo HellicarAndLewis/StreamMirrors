@@ -19,7 +19,6 @@
 
 
 
-#define HOLD_COUNT 80
 #define MAX_VIDEO_LENGTH 60
 #define MIN_VIDEO_LENGTH 15
 
@@ -28,6 +27,9 @@
 class testApp : public ofBaseApp{
 
 public:
+	bool clearAllVideos;
+	bool saveAllVideos;
+	int HOLD_COUNT;
 	void setup();
 	void update();
 	void draw();
@@ -105,13 +107,16 @@ public:
 	
 	ofImage frame;
 	
+	ofImage next;
 	ofImage one;
 	ofImage two;
 	ofImage three;
-	
 	ofImage ready;
+
+	ofImage move;
 	
 	void drawProgressBar(float v);
 	ofImage progressBar;
+	void drawCountdown(float v);
 };
 

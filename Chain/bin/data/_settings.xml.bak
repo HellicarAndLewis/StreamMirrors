@@ -13,7 +13,7 @@
     </Toggle_Learn_BG>
     <SliderInt_BG_Hysteresis>
         <name>BG Hysteresis</name>
-        <value>7</value>
+        <value>5</value>
     </SliderInt_BG_Hysteresis>
     <SliderInt_erosions>
         <name>erosions</name>
@@ -35,6 +35,10 @@
         <name>Draw Debug</name>
         <value>1</value>
     </Toggle_Draw_Debug>
+    <SliderInt_Count_down_time>
+        <name>Count down time</name>
+        <value>156</value>
+    </SliderInt_Count_down_time>
     <SliderFloat_Min_Time_between_recordings>
         <name>Min Time between recordings</name>
         <value>6.5</value>
@@ -65,30 +69,38 @@
     </SliderFloat_Triggers_Vertical>
     <SliderFloat_Triggers_Radius>
         <name>Triggers Radius</name>
-        <value>26</value>
+        <value>33</value>
     </SliderFloat_Triggers_Radius>
     <SliderInt_Trigger_Depth>
         <name>Trigger Depth</name>
-        <value>122</value>
+        <value>128</value>
     </SliderInt_Trigger_Depth>
+    <Toggle_save_all_videos>
+        <name>save all videos</name>
+        <value>0</value>
+    </Toggle_save_all_videos>
+    <Toggle_clear_all_videos>
+        <name>clear all videos</name>
+        <value>0</value>
+    </Toggle_clear_all_videos>
     <Toggle_Enable>
         <name>Enable</name>
         <value>1</value>
     </Toggle_Enable>
     <SliderFloat_sharpness>
         <name>sharpness</name>
-        <value>43</value>
+        <value>13</value>
     </SliderFloat_sharpness>
     <SliderFloat_brightness_scale>
         <name>brightness scale</name>
-        <value>0.1625</value>
+        <value>0.8</value>
     </SliderFloat_brightness_scale>
     <SliderFloat_pixScaleX>
         <name>pixScaleX</name>
-        <value>122</value>
+        <value>149.3</value>
     </SliderFloat_pixScaleX>
     <SliderFloat_pixScaleY>
         <name>pixScaleY</name>
-        <value>165.875</value>
+        <value>190.25</value>
     </SliderFloat_pixScaleY>
 </controls>

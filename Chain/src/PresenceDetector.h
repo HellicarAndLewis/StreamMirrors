@@ -63,17 +63,17 @@ public:
 		
 		if(leftSmoothed) {
 
-			glColor4f(0,1,0, alpha);
+			glColor4f(1,1,1, 0.45*alpha);
 		} else {
-			glColor4f(1,0,0.6,alpha);
+			glColor4f(1,1,1,0.15*alpha);
 		}
 		hand.draw(240 - triggersX, triggersY, triggerRadius*2, triggerRadius*2);
 		
 
 		if(rightSmoothed) {
-			glColor4f(0,1,0, alpha);
+			glColor4f(1,1,1, 0.45*alpha);
 		} else {
-			glColor4f(1,0,0.6,alpha);
+			glColor4f(1,1,1,0.15*alpha);
 		}
 		glPushMatrix();
 		{

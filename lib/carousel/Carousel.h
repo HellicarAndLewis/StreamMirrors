@@ -37,10 +37,13 @@ public:
 	RamVideo *videoBeingRemoved;
 	
 	Carousel() {
+		init();
+	}
+	void init() {
 		videoBeingRemoved = NULL;
 		paused = false;
 		overlap = 0;
-
+		
 		nextNextVideo = -1;
 		prevVideo = -1;
 		currVideo = 0;
@@ -50,7 +53,6 @@ public:
 		frameDuration = 100;
 		whatNextVideoWas = -1;
 	}
-	
 	
 	void setVideoFeed(ofTexture *vid) {
 		videoFeed.setVideoFeed(vid);
@@ -106,7 +108,19 @@ public:
 		clips.back().video = vid;
 	}
 	
-	
+	void clearVideos() {
+		while(clips.size()>0) {
+			RamVideo *v = clips.front().video;
+			clips.pop_front();
+			delete v;
+		}
+		init();
+	}
+	void saveVideos() {
+		for(int i = 0; i < clips.size(); i++) {
+			clips[i].video->dumpBlocking();
+		}
+	}
 	// this will return whether the video feed is present onscreen.
 	// 0 if not at all, 1 if filling the screen, and numbers in between
 	// to denote that its sliding on or off.
