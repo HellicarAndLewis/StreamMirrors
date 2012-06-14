@@ -8,6 +8,8 @@
 
 #ifndef opencvExample_RamVideo_h
 #define opencvExample_RamVideo_h
+#include "ofMain.h"
+
 #include "ofThread.h"
 #include "ofMain.h"
 
