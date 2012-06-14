@@ -45,7 +45,7 @@
     </SliderFloat_Min_Time_between_recordings>
     <SliderInt_Carousel_video_duration>
         <name>Carousel video duration</name>
-        <value>70</value>
+        <value>100</value>
     </SliderInt_Carousel_video_duration>
     <SliderFloat_Carousel_inactivity_delay>
         <name>Carousel inactivity delay</name>
@@ -53,11 +53,11 @@
     </SliderFloat_Carousel_inactivity_delay>
     <SliderFloat_Slide_time_pct>
         <name>Slide time pct</name>
-        <value>0.52975</value>
+        <value>0.75</value>
     </SliderFloat_Slide_time_pct>
     <SliderFloat_Overlap>
         <name>Overlap</name>
-        <value>100</value>
+        <value>0</value>
     </SliderFloat_Overlap>
     <SliderFloat_Triggers_Horizontal>
         <name>Triggers Horizontal</name>

@@ -73,7 +73,7 @@ void testApp::setup(){
 	gui.addSlider("Trigger Depth", farThreshold, 0, 255);
 	gui.addToggle("save all videos", saveAllVideos);
 	gui.addToggle("clear all videos", clearAllVideos);
-    dots.setup(480, 640);
+	dots.setup(480, 640);
 	gui.setAlignRight(true);
 	gui.setAutoSave(true);
 	gui.loadFromXML();
@@ -124,6 +124,14 @@ void testApp::doCompositing() {
 
 //--------------------------------------------------------------
 void testApp::update(){
+	if(clearAllVideos) {
+		carousel.clearVideos();
+		clearAllVideos = false;
+	}
+	if(saveAllVideos) {
+		carousel.saveVideos();
+		saveAllVideos = false;
+	}
 	ofBackground(0);
 
 	carousel.checkForSize();
