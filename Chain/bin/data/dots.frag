@@ -1,8 +1,11 @@
 
 //Declare a 2D texture as a uniform variable
-uniform sampler2D texture;
+uniform sampler2DRect texture;
 uniform float pixScale;
 uniform float sharpness;
+
+uniform float width;
+uniform float height;
 
 uniform float brightnessScale;
 uniform float maxScale;
@@ -52,14 +55,16 @@ void main()
 {
 	vec2 coords = gl_TexCoord[0].xy;
 	
+	vec2 dims = vec2(width, height);
+	
 	float xFactor = pixScale;
 	float yFactor = xFactor;
 	
-	vec4 color = texture2D(texture,coords);
+	vec4 color = texture2DRect(texture,coords*dims);
 	
 	vec2 quantCoords = findClosestDot(coords, xFactor, yFactor);
 	
-	vec4 quantColor = texture2D(texture,quantCoords);
+	vec4 quantColor = texture2DRect(texture,quantCoords*dims);
 	
 	float b = (quantColor.r+quantColor.g+quantColor.b)/3.0;
 	

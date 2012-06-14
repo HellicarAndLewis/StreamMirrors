@@ -13,7 +13,7 @@
     </Toggle_Learn_BG>
     <SliderInt_BG_Hysteresis>
         <name>BG Hysteresis</name>
-        <value>0</value>
+        <value>2</value>
     </SliderInt_BG_Hysteresis>
     <SliderInt_erosions>
         <name>erosions</name>
@@ -69,6 +69,18 @@
     </SliderFloat_Triggers_Radius>
     <SliderInt_Trigger_Depth>
         <name>Trigger Depth</name>
-        <value>168</value>
+        <value>79</value>
     </SliderInt_Trigger_Depth>
+    <SliderFloat_sharpness>
+        <name>sharpness</name>
+        <value>30.5</value>
+    </SliderFloat_sharpness>
+    <SliderFloat_brightness_scale>
+        <name>brightness scale</name>
+        <value>0.325</value>
+    </SliderFloat_brightness_scale>
+    <SliderFloat_pixScale>
+        <name>pixScale</name>
+        <value>161</value>
+    </SliderFloat_pixScale>
 </controls>

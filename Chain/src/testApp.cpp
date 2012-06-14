@@ -6,7 +6,13 @@
 
 
 
+ofImage frame;
 
+ofImage one;
+ofImage two;
+ofImage three;
+
+ofImage ready;
 
 void testApp::setupGraphics() {
 	ofSetFrameRate(30);
@@ -17,7 +23,7 @@ void testApp::setupGraphics() {
 
 //--------------------------------------------------------------
 void testApp::setup(){
-
+	frame.loadImage("frame.png");
 	setupGraphics();
 	setupVision();
 	
@@ -51,7 +57,7 @@ void testApp::setup(){
 	gui.addSlider("Triggers Vertical", presenceDetector.triggersY, 0, VISION_WIDTH);
 	gui.addSlider("Triggers Radius", presenceDetector.triggerRadius, 0, 100);
 	gui.addSlider("Trigger Depth", farThreshold, 0, 255);
-    dots.setup();
+    dots.setup(480, 640);
 	gui.setAlignRight(true);
 	gui.setAutoSave(true);
 	gui.loadFromXML();
@@ -59,7 +65,7 @@ void testApp::setup(){
 	recording = false;
 	
 	
-	//ofSetOrientation(OF_ORIENTATION_90_LEFT);
+	ofSetOrientation(OF_ORIENTATION_90_LEFT);
 	
 	
 }
@@ -184,8 +190,9 @@ void testApp::draw(){
 		// but we still need to offset it so it
 		// sits in the centre
 		glScalef(scale, scale, 1);
-	
+        dots.begin();
 		carousel.draw();
+        dots.end();
 		drawOverlays();
 	}
 	glPopMatrix();
@@ -195,6 +202,8 @@ void testApp::draw(){
 	if(gui.isOn()) {
 		gui.draw();
 	}
+	glColor4f(1, 0, 1, 1);
+	ofDrawBitmapString(ofToString(ofGetFrameRate(),2), 150, 20);
 }
 
 
