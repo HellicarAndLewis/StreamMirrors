@@ -6,13 +6,7 @@
 
 
 
-ofImage frame;
 
-ofImage one;
-ofImage two;
-ofImage three;
-
-ofImage ready;
 
 void testApp::setupGraphics() {
 	ofSetFrameRate(30);
@@ -24,6 +18,7 @@ void testApp::setupGraphics() {
 //--------------------------------------------------------------
 void testApp::setup(){
 	frame.loadImage("frame.png");
+	progressBar.loadImage("bar.png");
 	setupGraphics();
 	setupVision();
 	presenceDetector.setup();
@@ -227,12 +222,15 @@ void testApp::draw(){
 
 
 
-
+void testApp::drawProgressBar(float v) {
+	ofRect(0, 630, ofMap(video->getLength(), 0, MAX_VIDEO_LENGTH, 0, 480), 10);
+}
 void testApp::drawOverlays() {
 	if(recording) {
 		ofDrawBitmapString("Recording", 20, 20);
 		ofSetHexColor(0xFF0000);
-		ofRect(0, 630, ofMap(video->getLength(), 0, MAX_VIDEO_LENGTH, 0, 480), 10);
+		drawProgressBar(ofMap(video->getLength(), 0, MAX_VIDEO_LENGTH, 0, 1));
+		
 	} else if(holdCount>0 && holdCount<HOLD_COUNT) {
 		if(holdCount<HOLD_COUNT/3) {
 			ofSetHexColor(0xFF0000);

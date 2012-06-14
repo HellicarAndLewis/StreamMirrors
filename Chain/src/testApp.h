@@ -102,5 +102,16 @@ public:
 	unsigned char *videoFeedData;
 	float carouselDelay;
     DotProcessor dots;
+	
+	ofImage frame;
+	
+	ofImage one;
+	ofImage two;
+	ofImage three;
+	
+	ofImage ready;
+	
+	void drawProgressBar(float v);
+	ofImage progressBar;
 };
 

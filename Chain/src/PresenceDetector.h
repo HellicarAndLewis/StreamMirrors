@@ -75,9 +75,12 @@ public:
 		} else {
 			glColor4f(1,0,0.6,alpha);
 		}
-		
-		hand.draw(240 - triggersX, triggersY, triggerRadius*2, triggerRadius*2);
-		
+		glPushMatrix();
+		{
+			glScalef(-1, 1, 1);
+			hand.draw(-(240 + triggersX), triggersY, triggerRadius*2, triggerRadius*2);
+		}
+		glPopMatrix();
 		glLineWidth(1);
 		ofFill();
 	}
