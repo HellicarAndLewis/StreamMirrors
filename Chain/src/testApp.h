@@ -15,6 +15,8 @@
 #include "ActivityMonitor.h"
 #include "PresenceDetector.h"
 
+#include "DotProcessor.h"
+
 
 
 #define HOLD_COUNT 80
@@ -99,5 +101,6 @@ public:
 	ofTexture videoFeed;
 	unsigned char *videoFeedData;
 	float carouselDelay;
+    DotProcessor dots;
 };
 

@@ -51,6 +51,7 @@ void testApp::setup(){
 	gui.addSlider("Triggers Vertical", presenceDetector.triggersY, 0, VISION_WIDTH);
 	gui.addSlider("Triggers Radius", presenceDetector.triggerRadius, 0, 100);
 	gui.addSlider("Trigger Depth", farThreshold, 0, 255);
+    dots.setup();
 	gui.setAlignRight(true);
 	gui.setAutoSave(true);
 	gui.loadFromXML();
