@@ -1,7 +1,9 @@
 
 //Declare a 2D texture as a uniform variable
 uniform sampler2DRect texture;
-uniform float pixScale;
+uniform float pixScaleX;
+uniform float pixScaleY;
+
 uniform float sharpness;
 
 uniform float width;
@@ -57,8 +59,8 @@ void main()
 	
 	vec2 dims = vec2(width, height);
 	
-	float xFactor = pixScale;
-	float yFactor = xFactor;
+	float xFactor = pixScaleX;
+	float yFactor = pixScaleY;
 	
 	vec4 color = texture2DRect(texture,coords*dims);
 	
@@ -68,8 +70,8 @@ void main()
 	
 	float b = (quantColor.r+quantColor.g+quantColor.b)/3.0;
 	
-	float bri = 1.0 - length(coords - quantCoords)*xFactor*briScale(b);
-	
+	vec2 v = (coords - quantCoords)*vec2(xFactor, yFactor)*briScale(b);
+	float bri = 1.0 - length(v);
 	bri = marekstep(bri);
 	//bri = 1.0;
 	/*bri *= (1.0 - b)*3.0;

@@ -26,6 +26,7 @@ void testApp::setup(){
 	frame.loadImage("frame.png");
 	setupGraphics();
 	setupVision();
+	presenceDetector.setup();
 	
 
 	lastTimeFinishedRecording = -1000;
@@ -65,7 +66,7 @@ void testApp::setup(){
 	recording = false;
 	
 	
-	ofSetOrientation(OF_ORIENTATION_90_LEFT);
+	//ofSetOrientation(OF_ORIENTATION_90_LEFT);
 	
 	
 }
@@ -168,43 +169,63 @@ void testApp::update(){
 
 
 
+
+
+
+
+
 //--------------------------------------------------------------
 void testApp::draw(){
-
+	
 	
 	// what do we scale to?
-	float scale = (float)ofGetHeight()/(float)colorImg.getHeight();
-	float newWidth = scale * (float) colorImg.getWidth();
-	if(newWidth>ofGetWidth()) {
-		scale = (float) ofGetWidth()/(float) colorImg.getWidth();
-	}
 	
+	float scale = ofGetHeight()/frame.getHeight();
 	
 	ofSetHexColor(0xFFFFFF);
-	
-	
 	glPushMatrix();
 	{
-		// TODO:
-		// this scales the image as big as it can go
-		// but we still need to offset it so it
-		// sits in the centre
 		glScalef(scale, scale, 1);
-        dots.begin();
-		carousel.draw();
-        dots.end();
-		drawOverlays();
+	
+		
+		
+		// scale to the size of the video
+		scale = (float)frame.getWidth() / (float)videoFeed.getWidth();
+		float xx = ((float)videoFeed.getWidth() * (float)frame.getHeight()) / (float)frame.getWidth();
+		float yOff = (xx - videoFeed.getHeight())/2.f;
+		glPushMatrix();
+		{
+			glScalef(scale, scale, 1);
+			glTranslatef(0, yOff, 0);
+			dots.begin();
+			carousel.draw();
+			dots.end();
+			//videoFeed.draw(0, 0);
+			drawOverlays();
+		}
+		glPopMatrix();
+	
+	
+	
+		glColor3f(1,1,1);
+		frame.draw(0, 0);
 	}
 	glPopMatrix();
+	
 	
 	
 	
 	if(gui.isOn()) {
 		gui.draw();
 	}
-	glColor4f(1, 0, 1, 1);
-	ofDrawBitmapString(ofToString(ofGetFrameRate(),2), 150, 20);
 }
+
+
+
+
+
+
+
 
 
 void testApp::drawOverlays() {

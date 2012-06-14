@@ -13,15 +13,15 @@
     </Toggle_Learn_BG>
     <SliderInt_BG_Hysteresis>
         <name>BG Hysteresis</name>
-        <value>2</value>
+        <value>7</value>
     </SliderInt_BG_Hysteresis>
     <SliderInt_erosions>
         <name>erosions</name>
-        <value>1</value>
+        <value>2</value>
     </SliderInt_erosions>
     <SliderInt_dilations>
         <name>dilations</name>
-        <value>1</value>
+        <value>2</value>
     </SliderInt_dilations>
     <SliderInt_blurs>
         <name>blurs</name>
@@ -53,11 +53,11 @@
     </SliderFloat_Slide_time_pct>
     <SliderFloat_Overlap>
         <name>Overlap</name>
-        <value>74.5</value>
+        <value>100</value>
     </SliderFloat_Overlap>
     <SliderFloat_Triggers_Horizontal>
         <name>Triggers Horizontal</name>
-        <value>196.8</value>
+        <value>153.6</value>
     </SliderFloat_Triggers_Horizontal>
     <SliderFloat_Triggers_Vertical>
         <name>Triggers Vertical</name>
@@ -69,18 +69,26 @@
     </SliderFloat_Triggers_Radius>
     <SliderInt_Trigger_Depth>
         <name>Trigger Depth</name>
-        <value>79</value>
+        <value>122</value>
     </SliderInt_Trigger_Depth>
+    <Toggle_Enable>
+        <name>Enable</name>
+        <value>1</value>
+    </Toggle_Enable>
     <SliderFloat_sharpness>
         <name>sharpness</name>
-        <value>30.5</value>
+        <value>43</value>
     </SliderFloat_sharpness>
     <SliderFloat_brightness_scale>
         <name>brightness scale</name>
-        <value>0.325</value>
+        <value>0.1625</value>
     </SliderFloat_brightness_scale>
-    <SliderFloat_pixScale>
-        <name>pixScale</name>
-        <value>161</value>
-    </SliderFloat_pixScale>
+    <SliderFloat_pixScaleX>
+        <name>pixScaleX</name>
+        <value>122</value>
+    </SliderFloat_pixScaleX>
+    <SliderFloat_pixScaleY>
+        <name>pixScaleY</name>
+        <value>165.875</value>
+    </SliderFloat_pixScaleY>
 </controls>

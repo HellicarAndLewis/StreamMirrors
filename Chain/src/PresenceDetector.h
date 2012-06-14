@@ -13,8 +13,10 @@ public:
 	float triggersY;
 	float triggersX;
 	float triggerRadius;
-	
+	ofImage hand;
 	PresenceDetector() {
+
+	
 		triggersY = 120;
 		triggersX = 120;
 		triggerRadius = 40;
@@ -25,7 +27,10 @@ public:
 	}
 	
 	
-	
+	void setup() {
+		hand.loadImage("hand.png");
+		hand.setAnchorPercent(0.5, 0.5);
+	}
 	
 	void update(ofxCvGrayscaleImage &threshImg, bool force) {
 		if(force) {
@@ -62,13 +67,17 @@ public:
 		} else {
 			glColor4f(1,0,0.6,alpha);
 		}
-		ofCircle(240 - triggersX, triggersY, triggerRadius);
+		hand.draw(240 - triggersX, triggersY, triggerRadius*2, triggerRadius*2);
+		
+
 		if(rightSmoothed) {
 			glColor4f(0,1,0, alpha);
 		} else {
 			glColor4f(1,0,0.6,alpha);
 		}
-		ofCircle(240 + triggersX, triggersY, triggerRadius);
+		
+		hand.draw(240 - triggersX, triggersY, triggerRadius*2, triggerRadius*2);
+		
 		glLineWidth(1);
 		ofFill();
 	}
