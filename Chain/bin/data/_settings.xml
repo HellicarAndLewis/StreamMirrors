@@ -1,7 +1,7 @@
 <controls>
     <Toggle_Rotate_Clockwise>
         <name>Rotate Clockwise</name>
-        <value>0</value>
+        <value>1</value>
     </Toggle_Rotate_Clockwise>
     <Toggle_Flip_X>
         <name>Flip X</name>
@@ -57,7 +57,7 @@
     </SliderFloat_Slide_time_pct>
     <SliderFloat_Overlap>
         <name>Overlap</name>
-        <value>145.6</value>
+        <value>182</value>
     </SliderFloat_Overlap>
     <SliderFloat_Triggers_Horizontal>
         <name>Triggers Horizontal</name>
@@ -69,7 +69,7 @@
     </SliderFloat_Triggers_Vertical>
     <SliderFloat_Triggers_Radius>
         <name>Triggers Radius</name>
-        <value>33</value>
+        <value>38.5</value>
     </SliderFloat_Triggers_Radius>
     <SliderInt_Trigger_Depth>
         <name>Trigger Depth</name>
@@ -89,18 +89,22 @@
     </Toggle_Enable>
     <SliderFloat_sharpness>
         <name>sharpness</name>
-        <value>7.5</value>
+        <value>9.5</value>
     </SliderFloat_sharpness>
     <SliderFloat_brightness_scale>
         <name>brightness scale</name>
-        <value>0.45</value>
+        <value>0.0875</value>
     </SliderFloat_brightness_scale>
     <SliderFloat_pixScaleX>
         <name>pixScaleX</name>
-        <value>198.55</value>
+        <value>139.3</value>
     </SliderFloat_pixScaleX>
     <SliderFloat_pixScaleY>
         <name>pixScaleY</name>
-        <value>196.575</value>
+        <value>161.025</value>
     </SliderFloat_pixScaleY>
+    <SliderFloat_gain>
+        <name>gain</name>
+        <value>1.43</value>
+    </SliderFloat_gain>
 </controls>

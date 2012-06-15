@@ -42,6 +42,7 @@ void testApp::setup(){
 	presenceDetector.setup();
 	
 
+	thanksSign.setup();
 	lastTimeFinishedRecording = -1000;
 
 
@@ -100,6 +101,7 @@ void testApp::finishedRecording() {
 		carousel.replaceVideoFeedWithVideo(videos.back());
 		carousel.autoScroll();
 		lastTimeFinishedRecording = ofGetElapsedTimef();
+		thanksSign.ping();
 	} else {
 		printf("Didn't record anything!!\n");
 	}
@@ -322,7 +324,7 @@ void testApp::drawCountdown(float v) {
 	glPushMatrix();
 	{
 		glTranslatef(x, y, 0);
-		glScalef(0.5, 0.5, 1);
+		glScalef(0.25, 0.25, 1);
 		if(i<=2) {
 			ready.draw(0,0);
 		} else if(i==3) {
@@ -359,5 +361,6 @@ void testApp::drawOverlays() {
 	
 	presenceDetector.draw(carousel.amountOfVideoFeedShowing());
 
+	thanksSign.draw();
 }
 

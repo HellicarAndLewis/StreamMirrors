@@ -28,7 +28,7 @@ public:
 	
 	
 	void setup() {
-		hand.loadImage("hand.png");
+		hand.loadImage("handoutline.png");
 		hand.setAnchorPercent(0.5, 0.5);
 	}
 	
@@ -63,22 +63,22 @@ public:
 		
 		if(leftSmoothed) {
 
-			glColor4f(1,1,1, 0.45*alpha);
+			glColor4f(1,0,0, 0.9*alpha);
 		} else {
-			glColor4f(1,1,1,0.15*alpha);
+			glColor4f(1,1,1,0.4*alpha);
 		}
-		hand.draw(240 - triggersX, triggersY, triggerRadius*2, triggerRadius*2);
+		hand.draw(240 - triggersX, triggersY, triggerRadius*1.8, triggerRadius*1.8);
 		
 
 		if(rightSmoothed) {
-			glColor4f(1,1,1, 0.45*alpha);
+			glColor4f(1,0,0, 0.9*alpha);
 		} else {
-			glColor4f(1,1,1,0.15*alpha);
+			glColor4f(1,1,1,0.4*alpha);
 		}
 		glPushMatrix();
 		{
 			glScalef(-1, 1, 1);
-			hand.draw(-(240 + triggersX), triggersY, triggerRadius*2, triggerRadius*2);
+			hand.draw(-(240 + triggersX), triggersY, triggerRadius*1.8, triggerRadius*1.8);
 		}
 		glPopMatrix();
 		glLineWidth(1);

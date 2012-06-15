@@ -16,6 +16,7 @@
 #include "PresenceDetector.h"
 
 #include "DotProcessor.h"
+#include "ThanksSign.h"
 
 
 
@@ -118,5 +119,6 @@ public:
 	void drawProgressBar(float v);
 	ofImage progressBar;
 	void drawCountdown(float v);
+	ThanksSign thanksSign;
 };
 
