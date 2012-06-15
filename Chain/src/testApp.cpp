@@ -201,7 +201,6 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	
-	ofBackground(150, 150, 150);
 	// what do we scale to?
 	
 	float scale = ofGetHeight()/frame.getHeight();

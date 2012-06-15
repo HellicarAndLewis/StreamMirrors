@@ -55,6 +55,9 @@ void RamVideo::setup(int width, int height, int maxLength) {
 	this->needsToLoad = true;
 }
 
+
+
+
 void RamVideo::draw(float x, float y) {
 	if(needsToLoad) {
 		tex.loadData(frames[framePos], width, height, GL_RGBA);
@@ -63,34 +66,25 @@ void RamVideo::draw(float x, float y) {
 	tex.draw(x, y);
 }
 
-void RamVideo::draw(float x, float y, float w) { // automatically calculates height
-	if(needsToLoad) {
-		tex.loadData(frames[framePos], width, height, GL_RGBA);
-		needsToLoad = false;
-	}
-	float h = w*height/width;
-	tex.draw(x, y, w, h);
-}
-
-void RamVideo::draw(const ofRectangle &r) {
-	if(needsToLoad) {
-		tex.loadData(frames[framePos], width, height, GL_RGBA);
-		needsToLoad = false;
-	}
-	tex.draw(r);
-}
-
 void RamVideo::play() {
 	framePos = 0;
 }
 void RamVideo::nextFrame() {
-	if(frames.size()>0) {
-		framePos++;
-		framePos %= frames.size();
+	if(frames.size()==0) return;
+	
+
 		
-		needsToLoad = true;
-	}
+	framePos++;
+	framePos %= frames.size();
+	
+	needsToLoad = true;
+
+	
 }
+
+
+
+
 
 void RamVideo::createDir(string path) {
 	ofDirectory dir;

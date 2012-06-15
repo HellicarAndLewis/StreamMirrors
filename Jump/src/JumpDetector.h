@@ -70,10 +70,9 @@ private:
 		
 		
 		
-		// find (roughly) the third brightest pixel (third brightest will help
-		// get rid of some of the noise.)
+		// find (roughly) the third brightest pixel 
 		for(int j = b.boundingRect.y; j < b.boundingRect.y+b.boundingRect.height; j+=3) {
-			int yOffset = b.centroid.y;
+			int yOffset = j;
 			yOffset *= depthImg->getWidth();
 			int endX = b.boundingRect.x+b.boundingRect.width;
 			

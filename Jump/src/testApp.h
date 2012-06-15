@@ -13,7 +13,7 @@
 
 #define HOLD_COUNT 80
 #define MAX_VIDEO_LENGTH 50
-#define MIN_VIDEO_LENGTH 4
+#define MIN_VIDEO_LENGTH 2
 #include "DotProcessor.h"
 
 enum STATE {
@@ -81,13 +81,15 @@ public:
 	bool flipX;
 	
 	ofImage frame;
+	
+	bool clearAllVideos;
+	bool saveAllVideos;
 
 	bool drawDebug;
 	int nearThreshold;
 		
-	bool recording;
 	
-	
+	deque<unsigned char *> preroll;
 
 	int holdCount;
 	void doCompositing();

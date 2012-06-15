@@ -93,11 +93,11 @@ public:
 	
 	void replaceVideoFeedWithVideo(RamVideo *vid) {
 
-		clips.push_front(Clip());
-		clips.front().video = vid;
-		currVideo = 0;
-		nextVideo = 1;
-		if(clips.size()==1) nextVideo = 1;
+		clips.push_back(Clip());
+		clips.back().video = vid;
+		currVideo = clips.size()-1;
+		nextVideo = 0;
+//		if(clips.size()==1) nextVideo = 1;
 		
 		printf("Added video\n");
 		

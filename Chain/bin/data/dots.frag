@@ -11,6 +11,8 @@ uniform float height;
 
 uniform float brightnessScale;
 uniform float maxScale;
+uniform float brightness;
+
 float smootherstep(float x)
 {
     // Scale, and saturate x to 0..1 range
@@ -34,7 +36,7 @@ vec2 findClosestDot(vec2 coords, float xFactor, float yFactor) {
 	ymod -= coords.y;
 	float yOffset = 0.5 * sign(ymod);
 	
-	coords.y += yOffset*float(x%2);
+	coords.y += yOffset*float(x - 2*(x/2));
     
     
 	// scale up the image
@@ -79,7 +81,7 @@ void main()
      bri = 0.5 + bri*0.5;
      bri= smootherstep(smootherstep(bri));
      bri = 0.2;*/
-	vec4 c = vec4(bri*quantColor.r, bri*quantColor.g, bri*quantColor.b, 1.0);
+	vec4 c = vec4(min(1.0, bri*quantColor.r*brightness), min(1.0,bri*quantColor.g*brightness), min(1.0, bri*quantColor.b*brightness), 1.0);
 	//Multiply color by texture
 	gl_FragColor = gl_Color * c;
 }

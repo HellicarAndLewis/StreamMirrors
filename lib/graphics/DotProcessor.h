@@ -18,6 +18,7 @@ public:
         pixScaleX = 80;
         pixScaleY = 80;
         enable = true;
+		brightness = 1.0;
 		gui.addTitle("Shader");
 		
         gui.addToggle("Enable", enable);
@@ -25,6 +26,7 @@ public:
         gui.addSlider("brightness scale", brightnessScale, -1, 1.5);
         gui.addSlider("pixScaleX", pixScaleX, 5, 400);
         gui.addSlider("pixScaleY", pixScaleY, 5, 400);
+		gui.addSlider("gain", brightness, 0.5, 2.5);
 		fbo.allocate(width, height, GL_RGBA);
     }
     
@@ -37,6 +39,8 @@ public:
 			shader.setUniform1f("pixScaleY", pixScaleY);
 			shader.setUniform1f("width", fbo.getWidth());
 			shader.setUniform1f("height",fbo.getHeight());
+			
+			shader.setUniform1f("brightness", brightness);
 			shader.setUniformTexture("tex", tex, 0);
 			glBegin(GL_TRIANGLE_STRIP);
 			{
@@ -74,4 +78,5 @@ private:
     float pixScaleX;
 	float pixScaleY;
 	bool enable;
+	float brightness;
 };

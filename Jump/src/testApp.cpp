@@ -31,6 +31,11 @@ void testApp::setup(){
 	video = new RamVideo();
 	video->setup(480, 640, MAX_VIDEO_LENGTH);
 
+	for(int i =0; i < 5; i++) {
+		int size = 480*640*4;
+		preroll.push_back(new unsigned char[size]);
+		memset(preroll.back(), 0, size);
+	}
 	
 	drawDebug = false;
 	
@@ -55,12 +60,18 @@ void testApp::setup(){
 	gui.addSlider("Near Threshold", jumpDetector.nearThreshold, 0, 255);
 
 	gui.addSlider("Far Threshold", farThreshold, 0, 255); 
+	gui.addToggle("save all videos", saveAllVideos);
+	gui.addToggle("clear all videos", clearAllVideos);
+	
+	clearAllVideos = false;
+	saveAllVideos = false;
+	
+	
 	dots.setup(480, 640);
 	gui.setAlignRight(true);
 	gui.setAutoSave(true);
 	gui.loadFromXML();
 	
-	recording = false;
 	
 	
 	//ofSetOrientation(OF_ORIENTATION_90_LEFT);
@@ -70,7 +81,6 @@ void testApp::setup(){
 
 
 void testApp::finishedRecording() {
-	recording = false;
 	holdCount = 0;
 	if(video->getLength()>0) {
 		
@@ -84,7 +94,6 @@ void testApp::finishedRecording() {
 	} else {
 		printf("Didn't record anything!!\n");
 	}
-
 }
 
 
@@ -106,6 +115,10 @@ void testApp::doCompositing() {
 		i3 += 3;
 	}
 	videoFeed.loadData(videoFeedData, VISION_HEIGHT, VISION_WIDTH, GL_RGBA);
+	unsigned char *f = preroll.front();
+	preroll.pop_front();
+	memcpy(f, videoFeedData, VISION_WIDTH*VISION_HEIGHT*4);
+	preroll.push_back(f);
 }
 
 
@@ -113,11 +126,22 @@ void testApp::doCompositing() {
 void testApp::update(){
 	ofBackground(0);
 
+	if(clearAllVideos) {
+		carousel.clearVideos();
+		clearAllVideos = false;
+	}
+	if(saveAllVideos) {
+		carousel.saveVideos();
+		saveAllVideos = false;
+	}
+	
+	carousel.checkForSize();
 	
 	doVision();
 	doCompositing();
-	activityMonitor.update(threshImg); // don't know if we're using this one??
+	activityMonitor.update(threshImg);
 	jumpDetector.update(threshImg, depthImg);// mouseIsDown);
+	int lastState = state;
 	if(state==WAITING_FOR_PERSON) {
 		if(jumpDetector.personReady()) {
 			state = READY_WITH_PERSON;
@@ -140,10 +164,10 @@ void testApp::update(){
 		}
 	}
 	
-	/*
+	
 	// if there's been no movement for a while, (and we're not recording)
 	// start spinning the carousel
-	if(!carousel.isScrolling() && activityMonitor.getTimeSinceLastMove()>carouselDelay && !recording) {
+	if(!carousel.isScrolling() && activityMonitor.getTimeSinceLastMove()>carouselDelay && state!=RECORDING) {
 		printf("Activating carousel\n");
 		carousel.autoScroll();
 	} else {
@@ -159,29 +183,28 @@ void testApp::update(){
 		
 		
 		
-		if(!recording && jumpDetector.jumping()) {
+		if(state==RECORDING && lastState!=RECORDING) {
 			video->clear();
-			recording = true;
+			for(int i = 0; i < preroll.size(); i++) {
+				video->record(preroll[i]);
+			}
 		}
 
-		// if we're still recording, but the user has lost touch,
 		// stop recording
-		if(recording && !jumpDetector.jumping() && video->getLength()>MIN_VIDEO_LENGTH) {
+		if(lastState==RECORDING && state!=RECORDING && video->getLength()>MIN_VIDEO_LENGTH) {
 			printf("Recording finished because user stepped away\n");
 			finishedRecording();
-
 		}
 		
-		if(recording) {
+		if(state==RECORDING) {
 			// assemble composite
-			
 			bool stillCanRecord = video->record(videoFeedData);
 			if(!stillCanRecord) {
 				printf("Recording finished becasue it's maxed length\n");
 				finishedRecording();
 			}
 		}
-	}*/
+	}
 	
 	ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
 }
@@ -194,11 +217,7 @@ void testApp::draw(){
 	
 	// what do we scale to?
 	
-	ofSetHexColor(0xFFFFFF);
-	
 	float scale = ofGetHeight()/frame.getHeight();
-	
-	
 	
 	ofSetHexColor(0xFFFFFF);
 	glPushMatrix();
@@ -210,6 +229,8 @@ void testApp::draw(){
 		float yOff = (xx - videoFeed.getHeight())/2.f;
 		glPushMatrix();
 		{
+			glScalef(scale, scale, 1);
+			glTranslatef(0, yOff, 0);
 			dots.begin();
 			ofClear(0,0,0,0);
 			ofSetHexColor(0xFFFFFF);
@@ -217,7 +238,9 @@ void testApp::draw(){
 			dots.end();
 		
 			drawOverlays();
-			jumpDetector.drawDebug();
+			if(drawDebug) {
+				jumpDetector.drawDebug();
+			}
 		}
 		glPopMatrix();
 			
@@ -244,9 +267,12 @@ void testApp::draw(){
 			st = "THANKS, BYE";
 			break;
 	}
-	ofSetHexColor(0xDD33EE);
-	debugFont.drawString(st, 20, ofGetHeight()-20);
-	//jumpDetector.drawDebug();
+
+	if(drawDebug) {
+		ofSetHexColor(0xDD33EE);
+		debugFont.drawString(st, 20, ofGetHeight()-20);
+	}
+
 	if(gui.isOn()) {
 		gui.draw();
 	}
@@ -254,13 +280,6 @@ void testApp::draw(){
 
 
 void testApp::drawOverlays() {
-	if(recording) {
-		ofDrawBitmapString("Recording", 20, 20);
-		ofSetHexColor(0xFF0000);
-		ofRect(0, 630, ofMap(video->getLength(), 0, MAX_VIDEO_LENGTH, 0, 480), 10);
-	}
-	
 	jumpDetector.draw(carousel.amountOfVideoFeedShowing());
-
 }
 

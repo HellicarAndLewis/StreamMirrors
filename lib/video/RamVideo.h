@@ -34,9 +34,9 @@ public:
 
 	void draw(float x, float y);
 	
-	void draw(float x, float y, float w);
+//	void draw(float x, float y, float w);
 	
-	void draw(const ofRectangle &r);	
+	//void draw(const ofRectangle &r);	
 	void play();
 	
 	void nextFrame();
@@ -49,6 +49,7 @@ public:
 	
 	
 	ofTexture tex;
+	ofTexture lastTex;
 	bool record(unsigned char *frame);
 	
 	int framePos;

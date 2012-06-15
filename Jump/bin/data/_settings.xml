@@ -21,7 +21,7 @@
     </SliderInt_erosions>
     <SliderInt_dilations>
         <name>dilations</name>
-        <value>4</value>
+        <value>2</value>
     </SliderInt_dilations>
     <SliderInt_blurs>
         <name>blurs</name>
@@ -33,7 +33,7 @@
     </SliderInt_blur_size>
     <Toggle_Draw_Debug>
         <name>Draw Debug</name>
-        <value>1</value>
+        <value>0</value>
     </Toggle_Draw_Debug>
     <SliderFloat_Min_Time_between_recordings>
         <name>Min Time between recordings</name>
@@ -41,7 +41,7 @@
     </SliderFloat_Min_Time_between_recordings>
     <SliderInt_Carousel_video_duration>
         <name>Carousel video duration</name>
-        <value>70</value>
+        <value>100</value>
     </SliderInt_Carousel_video_duration>
     <SliderFloat_Carousel_inactivity_delay>
         <name>Carousel inactivity delay</name>
@@ -61,30 +61,42 @@
     </SliderFloat_Trigger_Height>
     <SliderFloat_Near_Threshold>
         <name>Near Threshold</name>
-        <value>91.8</value>
+        <value>131.325</value>
     </SliderFloat_Near_Threshold>
     <SliderInt_Far_Threshold>
         <name>Far Threshold</name>
-        <value>112</value>
+        <value>95</value>
     </SliderInt_Far_Threshold>
+    <Toggle_save_all_videos>
+        <name>save all videos</name>
+        <value>0</value>
+    </Toggle_save_all_videos>
+    <Toggle_clear_all_videos>
+        <name>clear all videos</name>
+        <value>0</value>
+    </Toggle_clear_all_videos>
     <Toggle_Enable>
         <name>Enable</name>
         <value>1</value>
     </Toggle_Enable>
     <SliderFloat_sharpness>
         <name>sharpness</name>
-        <value>33.5</value>
+        <value>7.5</value>
     </SliderFloat_sharpness>
     <SliderFloat_brightness_scale>
         <name>brightness scale</name>
-        <value>0</value>
+        <value>0.15</value>
     </SliderFloat_brightness_scale>
     <SliderFloat_pixScaleX>
         <name>pixScaleX</name>
-        <value>93.875</value>
+        <value>210.4</value>
     </SliderFloat_pixScaleX>
     <SliderFloat_pixScaleY>
         <name>pixScaleY</name>
-        <value>91.9</value>
+        <value>249.9</value>
     </SliderFloat_pixScaleY>
+    <SliderFloat_gain>
+        <name>gain</name>
+        <value>2.07</value>
+    </SliderFloat_gain>
 </controls>
