@@ -12,7 +12,10 @@
 #include "RamVideo.h"
 #include "Tween.h"
 #include "animation.h"
-#define MAX_NUM_VIDEOS 40
+
+
+// this equates to approximately 2GB's
+#define MAX_NUM_FRAMES 1500 
 
 class Carousel {
 public:
@@ -38,19 +41,22 @@ public:
 	
 	Carousel() {
 		init();
+		
+		slideTime = 0.75;
+		frameDuration = 100;
+		overlap = 0;
 	}
 	void init() {
 		videoBeingRemoved = NULL;
 		paused = false;
-		overlap = 0;
+		
 		
 		nextNextVideo = -1;
 		prevVideo = -1;
 		currVideo = 0;
 		nextVideo = 0;
 		frameNum = 0;
-		slideTime = 0.75;
-		frameDuration = 100;
+		
 		whatNextVideoWas = -1;
 	}
 	
@@ -146,7 +152,7 @@ public:
 		}
 		
 		if(videoBeingRemoved==NULL) {
-			if(clips.size()>MAX_NUM_VIDEOS) {
+			if(RamVideo::numFrames>MAX_NUM_FRAMES) {
 				if(currVideo!=0 && nextVideo!=0 && nextNextVideo!=0 && !clips.front().isAVideoFeed()) {	
 									// the beginning of the clip deque
 									// is the first one that was recorded.

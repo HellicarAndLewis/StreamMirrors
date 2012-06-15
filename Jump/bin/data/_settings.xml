@@ -33,7 +33,7 @@
     </SliderInt_blur_size>
     <Toggle_Draw_Debug>
         <name>Draw Debug</name>
-        <value>0</value>
+        <value>1</value>
     </Toggle_Draw_Debug>
     <SliderFloat_Min_Time_between_recordings>
         <name>Min Time between recordings</name>
@@ -41,7 +41,7 @@
     </SliderFloat_Min_Time_between_recordings>
     <SliderInt_Carousel_video_duration>
         <name>Carousel video duration</name>
-        <value>100</value>
+        <value>39</value>
     </SliderInt_Carousel_video_duration>
     <SliderFloat_Carousel_inactivity_delay>
         <name>Carousel inactivity delay</name>

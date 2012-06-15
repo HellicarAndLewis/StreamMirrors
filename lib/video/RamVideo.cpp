@@ -8,6 +8,8 @@
 
 #include "RamVideo.h"
 
+int RamVideo::numFrames = 0;
+
 RamVideo::RamVideo() {
 	done = false;
 }
@@ -17,6 +19,8 @@ RamVideo::~RamVideo() {
 	} 
 	
 void RamVideo::clear() {
+	numFrames -= frames.size();
+	
 	for(int i = 0; i < frames.size(); i++) {
 		delete [] frames[i];
 	}
@@ -138,6 +142,7 @@ void RamVideo::load(string path) {
 		unsigned char *frame = new unsigned char[len];
 		memcpy(frame, img.getPixels(), len);
 		frames.push_back(frame);
+		numFrames++;
 		
 	}
 	printf("\n");
@@ -146,11 +151,11 @@ void RamVideo::load(string path) {
 bool RamVideo::record(unsigned char *frame) {
 	
 	if(frames.size()>maxLength) return false;
-	
 	int len = width * height * 4;
 	unsigned char *f = new unsigned char[len];
 	memcpy(f, frame, len);
 	frames.push_back(f);
+	numFrames++;
 	return true;
 }
 

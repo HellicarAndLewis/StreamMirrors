@@ -13,12 +13,18 @@
 
 class JumpDetector {
 public:	
+	ofImage hurdle;
+	
 	JumpDetector() {
-
+		
 		isPersonReady = false;
 		isPersonJumping = false;
 	}
 	
+	void setup() {
+		hurdle.loadImage("hurdle.png");
+		hurdle.setAnchorPercent(0.5,0.5);
+	}
 	float triggerHeight;
 	float nearThreshold;
 	
@@ -45,9 +51,14 @@ public:
 	}
 	
 	void draw(float alpha) {
-		glColor4f(1, 0, 0, alpha);
-		
-		ofLine(0, triggerHeight, 480, triggerHeight);
+		glColor4f(1, 1, 1, alpha);
+		glPushMatrix();
+		glTranslatef(240, triggerHeight,0);
+		float scale = 480.f/1080.f;
+		glScalef(scale, scale, scale);
+		hurdle.draw(0, 0);
+		glPopMatrix();
+		//ofLine(0, triggerHeight, 480, triggerHeight);
 	}
 	
 	void drawDebug() {

@@ -45,7 +45,7 @@ void testApp::setup(){
 	
 	carousel.setVideoFeed(&videoFeed);
 	
-	
+	jumpDetector.setup();
 	gui.addToggle("Draw Debug", drawDebug);
 	
 	
@@ -91,6 +91,8 @@ void testApp::finishedRecording() {
 		carousel.replaceVideoFeedWithVideo(videos.back());
 		carousel.autoScroll();
 		lastTimeFinishedRecording = ofGetElapsedTimef();
+		
+		state = WAITING_FOR_PERSON_TO_GO;
 	} else {
 		printf("Didn't record anything!!\n");
 	}
@@ -183,18 +185,24 @@ void testApp::update(){
 		
 		
 		
+		
+		// start recording - add the preroll
 		if(state==RECORDING && lastState!=RECORDING) {
 			video->clear();
 			for(int i = 0; i < preroll.size(); i++) {
 				video->record(preroll[i]);
 			}
 		}
+		
+		
 
 		// stop recording
 		if(lastState==RECORDING && state!=RECORDING && video->getLength()>MIN_VIDEO_LENGTH) {
 			printf("Recording finished because user stepped away\n");
 			finishedRecording();
 		}
+		
+		
 		
 		if(state==RECORDING) {
 			// assemble composite
@@ -270,7 +278,7 @@ void testApp::draw(){
 
 	if(drawDebug) {
 		ofSetHexColor(0xDD33EE);
-		debugFont.drawString(st, 20, ofGetHeight()-20);
+		debugFont.drawString(st + " " + ofToString(RamVideo::numFrames), 20, ofGetHeight()-20);
 	}
 
 	if(gui.isOn()) {

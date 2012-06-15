@@ -59,6 +59,7 @@ public:
 	int height;
 	int maxLength;
 	vector<unsigned char *> frames;
+	static int numFrames;
 
 };
 

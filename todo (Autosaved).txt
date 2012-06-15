@@ -1,5 +1,4 @@
-- make more accurate limit for number of videos
-- fix orientation
+- stress test
 - thanks
 
 

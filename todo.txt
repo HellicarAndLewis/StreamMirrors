@@ -1,4 +1,4 @@
-- make more accurate limit for number of videos
+- stress test
 - fix orientation
 - thanks
 
@@ -6,4 +6,7 @@
 JUMP
 ---
 - fix interaction
-- fix lay6out
+- add graphics
+- the first video that plays after you jumped is not the one you just did
+	- it should keep playing the one you just did until you move
+	  out of shot
