@@ -8,7 +8,8 @@
 #include "Carousel.h"
 #include "ActivityMonitor.h"
 #include "JumpDetector.h"
-
+#include "JumpSign.h"
+#include "ThanksSign.h"
 
 
 #define HOLD_COUNT 80
@@ -105,5 +106,7 @@ public:
 	unsigned char *videoFeedData;
 	float carouselDelay;
 	ofTrueTypeFont debugFont;
+	JumpSign jumpSign;
+	ThanksSign thanksSign;
 };
 

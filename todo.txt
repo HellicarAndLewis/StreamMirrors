@@ -1,12 +1,17 @@
 - stress test
-- fix orientation
 - thanks
 
 
 JUMP
 ---
 - fix interaction
+
 - add graphics
+
 - the first video that plays after you jumped is not the one you just did
 	- it should keep playing the one you just did until you move
 	  out of shot
+
+pop old videos off the back, not the front.
+
+test popping videos off the back.

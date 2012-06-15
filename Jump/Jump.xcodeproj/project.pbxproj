@@ -283,6 +283,8 @@
 		EAEDDE98156AC18E0016A7F7 /* ofxKinect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxKinect.h; sourceTree = "<group>"; };
 		EAF44DE5158B383D003E04F2 /* dots.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = dots.frag; path = bin/data/dots.frag; sourceTree = "<group>"; };
 		EAF44DE6158B383D003E04F2 /* dots.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = dots.vert; path = bin/data/dots.vert; sourceTree = "<group>"; };
+		EAF44DF3158B7C70003E04F2 /* JumpSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpSign.h; sourceTree = "<group>"; };
+		EAF44DF5158B7DF3003E04F2 /* ThanksSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThanksSign.h; sourceTree = "<group>"; };
 		c1c56d20a1a57dc44096bfe709100d93 /* ofxCvContourFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxCvContourFinder.h; path = ../../../addons/ofxOpenCv/src/ofxCvContourFinder.h; sourceTree = SOURCE_ROOT; };
 		c6151136d101f857dae12722e3c42f4a /* ofxCvImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxCvImage.cpp; path = ../../../addons/ofxOpenCv/src/ofxCvImage.cpp; sourceTree = SOURCE_ROOT; };
 		c76de5c29bdbd2caa1dd0021a7376220 /* ofxCvContourFinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxCvContourFinder.cpp; path = ../../../addons/ofxOpenCv/src/ofxCvContourFinder.cpp; sourceTree = SOURCE_ROOT; };
@@ -401,7 +403,9 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				EABE506F157A3DAF00FD067F /* testAppVision.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
+				EAF44DF5158B7DF3003E04F2 /* ThanksSign.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
+				EAF44DF3158B7C70003E04F2 /* JumpSign.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

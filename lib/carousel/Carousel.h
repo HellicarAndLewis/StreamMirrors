@@ -46,7 +46,9 @@ public:
 		frameDuration = 100;
 		overlap = 0;
 	}
+	bool autoscrolling;
 	void init() {
+		autoscrolling = false;
 		videoBeingRemoved = NULL;
 		paused = false;
 		
@@ -68,6 +70,8 @@ public:
 	int nextVideoToVideoFeedStartTime;
 	
 	void autoScroll() {
+		if(autoscrolling) return;
+		autoscrolling = true;
 		paused = false;
 		printf("Autoscrolling\n");
 		
@@ -84,7 +88,8 @@ public:
 	}
 	
 	void scrollToVideoFeed() {
-		
+		if(nextVideo==-1 || currVideo==-1) return;
+		autoscrolling = false;
 		// start sliding straight away if we're not already sliding
 		if(frameNum < slideTime*frameDuration) frameNum = slideTime*frameDuration;
 		
@@ -98,12 +103,18 @@ public:
 	}
 	
 	void replaceVideoFeedWithVideo(RamVideo *vid) {
-
+		paused = true;
+/*
 		clips.push_back(Clip());
 		clips.back().video = vid;
 		currVideo = clips.size()-1;
 		nextVideo = 0;
-//		if(clips.size()==1) nextVideo = 1;
+		*/
+		clips.push_front(Clip());
+		clips.front().video = vid;
+		currVideo = 0;//clips.size()-1;
+		nextVideo = 1;
+		if(clips.size()==1) nextVideo = -1;
 		
 		printf("Added video\n");
 		

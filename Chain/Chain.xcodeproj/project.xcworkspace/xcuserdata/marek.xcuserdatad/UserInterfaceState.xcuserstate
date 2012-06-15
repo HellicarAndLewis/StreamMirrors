@@ -5295,7 +5295,7 @@
 		<string>IDEWorkspaceWindowControllerUniqueIdentifier</string>
 		<string>IDEWorkspaceTabController_1F271C2D-8D9E-4530-918F-024345F56DA0</string>
 		<string>IDEWindowTabBarIsVisible</string>
-		<string>{{380, 6}, {1599, 1180}}</string>
+		<string>{{1057, 6}, {1599, 1180}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -5783,7 +5783,7 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>361460022.636518</real>
+		<real>361464738.26923001</real>
 		<string>{820, 1117}</string>
 		<string>{1937, 0}</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
@@ -16523,7 +16523,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>361460022.63426399</real>
+		<real>361464738.26708299</real>
 		<string>{820, 1117}</string>
 		<string>{1937, 0}</string>
 		<dict>

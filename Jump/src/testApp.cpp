@@ -17,11 +17,14 @@ void testApp::setupGraphics() {
 
 
 
+
 //--------------------------------------------------------------
 void testApp::setup(){
 
 	setupGraphics();
 	setupVision();
+	jumpSign.setup();
+	thanksSign.setup();
 	
 	state = WAITING_FOR_PERSON;
 	debugFont.loadFont("Impact.ttf", 60);
@@ -47,14 +50,15 @@ void testApp::setup(){
 	
 	jumpDetector.setup();
 	gui.addToggle("Draw Debug", drawDebug);
+	carousel.overlap = 0;
+	carousel.slideTime = 1;
 	
-	
-	gui.addSlider("Min Time between recordings", minRecordingInterval, 2, 20);
+	//gui.addSlider("Min Time between recordings", minRecordingInterval, 2, 20);
 	gui.addSlider("Carousel video duration", carousel.frameDuration, 10, 200);
-	gui.addSlider("Carousel inactivity delay", carouselDelay, 0, 5);
-	gui.addSlider("Slide time pct", carousel.slideTime, 0.05, 1);
+	//gui.addSlider("Carousel inactivity delay", carouselDelay, 0, 5);
+	//gui.addSlider("Slide time pct", carousel.slideTime, 0.05, 1);
 	gui.addTitle("Carousel");
-	gui.addSlider("Overlap", carousel.overlap, 0, 100);
+	//gui.addSlider("Overlap", carousel.overlap, 0, 100);
 	gui.addTitle("Triggers");
 	gui.addSlider("Trigger Height", jumpDetector.triggerHeight, 0, VISION_WIDTH);
 	gui.addSlider("Near Threshold", jumpDetector.nearThreshold, 0, 255);
@@ -89,7 +93,7 @@ void testApp::finishedRecording() {
 		video = new RamVideo();
 		video->setup(480, 640, MAX_VIDEO_LENGTH);
 		carousel.replaceVideoFeedWithVideo(videos.back());
-		carousel.autoScroll();
+		//carousel.autoScroll();
 		lastTimeFinishedRecording = ofGetElapsedTimef();
 		
 		state = WAITING_FOR_PERSON_TO_GO;
@@ -166,6 +170,17 @@ void testApp::update(){
 		}
 	}
 	
+	if(state==READY_WITH_PERSON) {
+		carousel.scrollToVideoFeed();
+		
+	} else if(state==WAITING_FOR_PERSON) {
+		carousel.autoScroll();
+	}
+	
+	if(state==WAITING_FOR_PERSON_TO_GO && lastState!=WAITING_FOR_PERSON_TO_GO) {
+		thanksSign.ping();
+	}
+	/*
 	
 	// if there's been no movement for a while, (and we're not recording)
 	// start spinning the carousel
@@ -183,36 +198,37 @@ void testApp::update(){
 			//printf("Creating space and going to end\n");
 		}
 		
+		*/
 		
 		
-		
-		// start recording - add the preroll
-		if(state==RECORDING && lastState!=RECORDING) {
-			video->clear();
-			for(int i = 0; i < preroll.size(); i++) {
-				video->record(preroll[i]);
-			}
-		}
-		
-		
-
-		// stop recording
-		if(lastState==RECORDING && state!=RECORDING && video->getLength()>MIN_VIDEO_LENGTH) {
-			printf("Recording finished because user stepped away\n");
-			finishedRecording();
-		}
-		
-		
-		
-		if(state==RECORDING) {
-			// assemble composite
-			bool stillCanRecord = video->record(videoFeedData);
-			if(!stillCanRecord) {
-				printf("Recording finished becasue it's maxed length\n");
-				finishedRecording();
-			}
+	// start recording - add the preroll
+	if(state==RECORDING && lastState!=RECORDING) {
+		video->clear();
+		for(int i = 0; i < preroll.size(); i++) {
+			video->record(preroll[i]);
 		}
 	}
+	
+	
+
+	// stop recording
+	if(lastState==RECORDING && state!=RECORDING && video->getLength()>MIN_VIDEO_LENGTH) {
+		printf("Recording finished because user stepped away\n");
+		finishedRecording();
+	}
+	
+	
+	
+	if(state==RECORDING) {
+		// assemble composite
+		bool stillCanRecord = video->record(videoFeedData);
+		if(!stillCanRecord) {
+			printf("Recording finished becasue it's maxed length\n");
+			finishedRecording();
+		}
+	}
+	
+	jumpSign.update(state==READY_WITH_PERSON);
 	
 	ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
 }
@@ -289,5 +305,7 @@ void testApp::draw(){
 
 void testApp::drawOverlays() {
 	jumpDetector.draw(carousel.amountOfVideoFeedShowing());
+	jumpSign.draw();
+	thanksSign.draw();
 }
 
