@@ -104,12 +104,7 @@ public:
 	
 	void replaceVideoFeedWithVideo(RamVideo *vid) {
 		paused = true;
-/*
-		clips.push_back(Clip());
-		clips.back().video = vid;
-		currVideo = clips.size()-1;
-		nextVideo = 0;
-		*/
+
 		clips.push_front(Clip());
 		clips.front().video = vid;
 		currVideo = 0;//clips.size()-1;
@@ -164,20 +159,20 @@ public:
 		
 		if(videoBeingRemoved==NULL) {
 			if(RamVideo::numFrames>MAX_NUM_FRAMES) {
-				if(currVideo!=0 && nextVideo!=0 && nextNextVideo!=0 && !clips.front().isAVideoFeed()) {	
+				if(currVideo!=clips.size()-1 && nextVideo!=clips.size()-1 && nextNextVideo!=clips.size()-1 && prevVideo!=clips.size()-1 && !clips.back().isAVideoFeed()) {	
 									// the beginning of the clip deque
 									// is the first one that was recorded.
 									// we want to delete it if it's not currently
 									// being played.
-					videoBeingRemoved = clips.front().video;
-					clips.pop_front();
+					videoBeingRemoved = clips.back().video;
+					clips.pop_back();
 					// start the dump here.
 					videoBeingRemoved->dump();
 					printf("Started dumping a video\n");
-					if(currVideo>-1) currVideo--;
-					if(nextVideo>-1) nextVideo--;
-					if(nextNextVideo>-1) nextNextVideo--;
-					if(prevVideo>-1) prevVideo--;
+					//if(currVideo>-1) currVideo--;
+					//if(nextVideo>-1) nextVideo--;
+					//if(nextNextVideo>-1) nextNextVideo--;
+					//if(prevVideo>-1) prevVideo--;
 					
 				}
 			}

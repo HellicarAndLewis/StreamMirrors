@@ -345,18 +345,6 @@ void testApp::drawOverlays() {
 		
 	} else if(holdCount>0 && holdCount<HOLD_COUNT) {
 		drawCountdown((float)holdCount/(float)HOLD_COUNT);
-/*		if(holdCount<HOLD_COUNT/3) {
-			ofSetHexColor(0xFF0000);
-			ofDrawBitmapString("READY!!!", 20, 20);
-		} else if(holdCount<2*HOLD_COUNT/3) {
-			ofSetHexColor(0xFFCC00);
-			ofDrawBitmapString("STEADY!!!", 20, 20);
-			
-		} else {
-			ofSetHexColor(0x00FF00);
-			ofDrawBitmapString("GO!!!", 20, 20);
-		}
-*/
 	}
 	
 	presenceDetector.draw(carousel.amountOfVideoFeedShowing());
